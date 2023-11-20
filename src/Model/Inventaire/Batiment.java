@@ -5,28 +5,34 @@ import java.util.Scanner;
 
 
 public class Batiment {
-    private String idBatiment;
-    private String nomBatiment;
+    private String id;
+    private String nom;
+    private String type;
     private ArrayList<Object> list; 
     
     // Constructor without parameters
     public Batiment() {list = new ArrayList<>();}
 
     // Constructor with idBatiment and nomBatiment
-    public Batiment(String idBatiment, String nomBatiment) {
-        this.idBatiment = idBatiment;
-        this.nomBatiment = nomBatiment; 
+    public Batiment(String idBatiment, String nomBatiment, String type) {
+        this.id = idBatiment;
+        this.nom = nomBatiment;
+        this.type = type;
         list = new ArrayList<>();
     } 
     
     // Getters and Setters
-    public String getIdBatiment(){ return idBatiment; }
+    public String getId(){ return id; }
 
-    public void setIdBatiment(String idBatiment) { this.idBatiment = idBatiment; }
+    public void setId(String id) { this.id = id; }
 
-    public String getNomBatiment() { return nomBatiment; }
+    public String getNom() { return nom; }
 
-    public void setNomBatiment(String nomBatiment) { this.nomBatiment = nomBatiment; }
+    public void setNom(String nom) { this.nom = nom; }
+    
+    public void setType(String type){this.type = type;}
+    
+    public String getType(){ return type; }
     
     public ArrayList<Object> getList() { return list; }
 
@@ -36,10 +42,10 @@ public class Batiment {
     public void saisie(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter l'idBatiment: ");
-        idBatiment = "bat"+sc.nextInt();
+        id = "bat"+sc.nextInt();
         sc.nextLine();
         System.out.print("Enter le nom du Batiment: ");
-        nomBatiment = sc.nextLine();       
+        nom = sc.nextLine();       
     }
     //modifier le batiment 
     public void modifier(){
@@ -48,7 +54,7 @@ public class Batiment {
        System.out.print("nouveau nom du Batiment (appuiyer sur entrée pour conserver l'ancien) ");
        String nouvnomBat = sc.nextLine(); 
        if (!nouvnomBat.isEmpty()) {
-            nomBatiment = nouvnomBat;
+            nom = nouvnomBat;
         }
         System.out.println("pour effacer la list existante enter un mot(appuiyer sur entrée pour conserver l'ancienne)");
         String input = sc.nextLine(); 
@@ -80,7 +86,7 @@ public class Batiment {
     // toString 
      @Override
     public String toString() {
-        String str="idBatiment: "+idBatiment+"\n"+"nomBatiment: "+nomBatiment+"\n"+"elements=[";
+        String str="idBatiment: "+id+"\n"+"nomBatiment: "+nom+"\n"+"elements=[";
         for (Object element : list) {
             str+=element.toString()+"\n ";
         }

@@ -1,9 +1,8 @@
-package Controller.Inventaire;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
+package Controller.Inventaire;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,9 +11,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author ADMIN
+ * @author abir
  */
-public class BatimentController implements Initializable {
+public class PesticideSaisieController implements Initializable {
 
     /**
      * Initializes the controller class.

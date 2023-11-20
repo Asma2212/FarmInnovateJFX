@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/FarmInnovateFX/FarmInnovateFX.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/HomeController.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/BatimentsController.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/PesticideSaisieController.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/BatimentAnimalController.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/View/Inventaire/Batiments.fxml</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Model/Inventaire/Batiment.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/EngraisSaisieController.java</file>
+            <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/FarmInnovateFX/FarmInnovateFX.java</file>
         </group>
     </open-files>
 </project-private>
