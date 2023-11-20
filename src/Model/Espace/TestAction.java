@@ -4,8 +4,15 @@
  */
 package Model.Espace;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -17,7 +24,29 @@ public class TestAction {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Collection<Client> clients = new ArrayList<>();
+        try{
+            Class.forName("oracle.jdbc.OracleDriver");
+            String url = "jdbc:oracle:thin:@localhost:1521:XE";
+            String name = "ferme";
+            String pass = "ferme";
+            Connection conn = DriverManager.getConnection(url,name,pass);
+            PreparedStatement pst = conn.prepareStatement("SELECT SYSDATE FROM DUAL");
+            ResultSet rs = pst.executeQuery("SELECT SYSDATE FROM DUAL");
+         
+         
+        if (rs.next()) {
+            Date currentDate = rs.getDate(1); // get first column returned
+            System.out.println("Current Date from Oracle is : "+currentDate);
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+        }catch(ClassNotFoundException cnf){
+            System.out.println("error class: "+cnf.getMessage()); 
+        }catch( SQLException sqlE){
+            System.out.println("error SQL: "+sqlE.getMessage()); 
+        }
+       /* Collection<Client> clients = new ArrayList<>();
         Collection<Fermier> fermiers = new ArrayList<>();
         Collection<Responsable> responsables = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -101,7 +130,7 @@ public class TestAction {
                 }while(choix2 != 3);
                 }
         }
-        }while(choix!=4);
+        }while(choix!=4);*/
     }
     
 }

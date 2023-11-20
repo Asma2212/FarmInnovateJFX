@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class Client extends Personne implements IUser<Client>,Comparator<Client>{
     private String motDePasse ;
-    private Date dateInscription ;
+    private Date dateInscri ;
     private Map<Date,Commande> commandes = new HashMap(){};
 
     // ***********************  Constructeurs ****************************  //
@@ -52,7 +52,7 @@ public class Client extends Personne implements IUser<Client>,Comparator<Client>
     @Override
     public String toString(){
         String ch;
-        ch = super.toString()+"\nDate inscription : "+dateInscription;
+        ch = super.toString()+"\nDate Inscri : "+dateInscri;
         return ch;
     }
     // ***********************  Manipulation ****************************  //
@@ -86,7 +86,7 @@ public class Client extends Personne implements IUser<Client>,Comparator<Client>
     }
     @Override
     public int compare(Client c1, Client c2) {
-      return c1.getDateInscription().compareTo(c2.getDateInscription());
+      return c1.getDateInscri().compareTo(c2.getDateInscri());
     }
     // ***********************  getters et setters  ****************************  //
 
@@ -98,12 +98,12 @@ public class Client extends Personne implements IUser<Client>,Comparator<Client>
         this.motDePasse = motDePasse;
     }
 
-    public Date getDateInscription() {
-        return dateInscription;
+    public Date getDateInscri() {
+        return dateInscri;
     }
 
-    public void setDateInscription(Date dateInscription) {
-        this.dateInscription = dateInscription;
+    public void setDateInscri(Date dateInscri) {
+        this.dateInscri = dateInscri;
     }
 
     public Map<Date,Commande> getCommandes() {
