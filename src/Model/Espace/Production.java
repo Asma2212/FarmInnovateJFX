@@ -12,14 +12,14 @@ import java.util.Scanner;
  * @author ADMIN
  */
 public class Production {
-    private int refP;
+    private String refP;
     private int qteStock;
     private Double prix ;
 
     public Production() {
     }
 
-    public Production(int refP, int qteStock, Double prix) {
+    public Production(String refP, int qteStock, Double prix) {
         this.refP = refP;
         this.qteStock = qteStock;
         this.prix = prix;
@@ -28,7 +28,7 @@ public class Production {
     public void saisir(Scanner sc){
         try{
             System.out.println("entrer la reference du produit : ");
-            this.refP=sc.nextInt();
+            this.refP=sc.next();
             System.out.println("entrer la quantité en stock : ");
             this.qteStock=sc.nextInt();
             System.out.println("entrer son prix : ");
@@ -40,7 +40,7 @@ public class Production {
     public void modifier(Scanner sc){
        try{
             System.out.println("entrer la nouvelle reference : ");
-            this.refP=sc.nextInt();
+            this.refP=sc.next();
             System.out.println("entrer la nouvelle quantité : ");
             this.qteStock=sc.nextInt();
             System.out.println("entrer le nouveau prix : ");
@@ -53,11 +53,11 @@ public class Production {
     public String toString(){
         return "RefP : "+refP+" Qte Stock : "+ qteStock+" prix : "+prix;
     }
-    public int getRefP() {
+    public String getRefP() {
         return refP;
     }
 
-    public void setRefP(int refP) {
+    public void setRefP(String refP) {
         this.refP = refP;
     }
 

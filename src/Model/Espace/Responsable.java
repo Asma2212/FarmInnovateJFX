@@ -29,7 +29,7 @@ public class Responsable extends Personne implements IUser<Responsable>{
     private Set<Ouvrier> ouvriers ;
     private Set<Batiment> batiments;
     private Set<Plante> plantes;
-    private Map<Integer,Production> productions;
+    private Map<String,Production> productions;
     
     // ***********************  Constructeurs ****************************  //
     
@@ -171,7 +171,7 @@ public class Responsable extends Personne implements IUser<Responsable>{
         if(productions.isEmpty())
             System.out.println("vide!");
         else
-        for (Map.Entry<Integer, Production> prod : productions.entrySet()){
+        for (Map.Entry<String, Production> prod : productions.entrySet()){
             //int ref = prod.getKey();
             Production p = prod.getValue();
             System.out.println(p);   

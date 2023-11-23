@@ -4,6 +4,8 @@
  */
 package FarmInnovateFX;
 
+import Controller.Espace.LoginController;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,12 +20,16 @@ public class FarmInnovateFX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/Espace/Home.fxml"));
+        try {
+        Parent root = FXMLLoader.load(getClass().getResource("/View/Espace/HomeF.fxml"));
         Scene scene = new Scene(root);
-        
+     
         stage.setScene(scene);
         stage.setTitle("FarmInnovate/Acceuil");
         stage.show();
+    } catch (IOException ioe){
+            System.out.println(ioe.getMessage());
+     }
     }
 
     /**

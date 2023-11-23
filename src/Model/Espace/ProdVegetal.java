@@ -19,7 +19,7 @@ public class ProdVegetal extends Production{
     public ProdVegetal() {
     }
 
-    public ProdVegetal(String nature, Date dateRecolte,Date dateSemis, int refP, int qteStock, Double prix) {
+    public ProdVegetal(String nature, Date dateRecolte,Date dateSemis, String refP, int qteStock, Double prix) {
         super(refP, qteStock, prix);
         this.nature = nature;
         this.dateRecolte = dateRecolte;

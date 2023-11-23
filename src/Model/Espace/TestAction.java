@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,18 +26,42 @@ public class TestAction {
      */
     public static void main(String[] args) {
         try{
+            Scanner sc = new Scanner(System.in);
             Class.forName("oracle.jdbc.OracleDriver");
             String url = "jdbc:oracle:thin:@localhost:1521:XE";
             String name = "ferme";
             String pass = "ferme";
+            Model.Date d = new Model.Date();
             Connection conn = DriverManager.getConnection(url,name,pass);
-            PreparedStatement pst = conn.prepareStatement("SELECT SYSDATE FROM DUAL");
-            ResultSet rs = pst.executeQuery("SELECT SYSDATE FROM DUAL");
-         
-         
+            Fermier fermier = new Fermier("123456",50.0,50.0,123456,"F","Bey","Asma",55423178,d,"asma.b@g.c");
+            //fermier.saisir(sc);
+            Statement st = conn.createStatement();
+            int res = 0;
+           /* String insP = "INSERT INTO Personne VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(insP);
+            ps.setInt(1, fermier.getIdP());
+            ps.setInt(2, fermier.getCin());
+            ps.setString(3, fermier.getGenre());
+            ps.setString(4, fermier.getNom());
+            ps.setString(5, fermier.getPrenom());
+            ps.setInt(6, fermier.getNumTel());
+            ps.setString(7, fermier.getDateNaiss().toString());
+            ps.setString(8, fermier.getEmail());
+            int resP = ps.executeUpdate();
+
+            String insF = "INSERT INTO Fermier VALUES (?, ?, ?, ?)";
+            ps = conn.prepareStatement(insF);
+            ps.setInt(1, fermier.getIdP());
+            ps.setString(2, fermier.getMotDePasse());
+            ps.setDouble(3, fermier.getRevenue());
+            ps.setDouble(4, fermier.getActions());
+            int resF = ps.executeUpdate();*/
+            String selectF="SELECT * FROM Personne" ;
+            PreparedStatement pst = conn.prepareStatement(selectF);
+            ResultSet rs = pst.executeQuery(selectF);
         if (rs.next()) {
-            Date currentDate = rs.getDate(1); // get first column returned
-            System.out.println("Current Date from Oracle is : "+currentDate);
+            //fermier = rs.first(); 
+            System.out.println(" : "+rs.getInt(1)+"name"+rs.getString(4));
         }
         rs.close();
         pst.close();
@@ -49,7 +74,6 @@ public class TestAction {
        /* Collection<Client> clients = new ArrayList<>();
         Collection<Fermier> fermiers = new ArrayList<>();
         Collection<Responsable> responsables = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
         Fermier fermier = new Fermier();
         Responsable responsable = new Responsable();
         Client client = new Client();

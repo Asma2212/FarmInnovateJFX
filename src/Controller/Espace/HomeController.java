@@ -22,25 +22,15 @@ import javafx.stage.Stage;
  * @author ADMIN
  */
 public class HomeController implements Initializable {
+
     
-    @FXML
-    private Label label;
-    @FXML
-    private Button button;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
     @FXML
     private void EspaceFermierAction(ActionEvent event) {
         try{
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../View/Espace/Login.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Espace/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-    //stage.initModality(Modality.APPLICATION_MODAL);
-    //stage.initStyle(StageStyle.UNDECORATED);
+        
         stage.setTitle("FarmInnovate/Connexion");
         stage.setScene(new Scene(root1));  
         stage.show();   
@@ -52,7 +42,7 @@ public class HomeController implements Initializable {
         @FXML
     private void EspaceResponsableAction(ActionEvent event) {
         try{
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../View/Espace/Login.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Espace/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
     //stage.initModality(Modality.APPLICATION_MODAL);
@@ -68,7 +58,7 @@ public class HomeController implements Initializable {
         @FXML
     private void EspaceClientAction(ActionEvent event) {
         try{
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../View/Espace/Login.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Espace/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
     //stage.initModality(Modality.APPLICATION_MODAL);

@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace.LoginController">
    <children>
-      <Pane layoutX="212.0" layoutY="100.0" prefHeight="448.0" prefWidth="454.0" style="-fx-border-color: grey; -fx-background-color: #E8E8E8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);">
+      <Pane layoutX="213.0" layoutY="100.0" prefHeight="448.0" prefWidth="454.0" style="-fx-border-color: grey; -fx-background-color: #E8E8E8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);">
          <children>
-            <TextField layoutX="94.0" layoutY="116.0" prefHeight="30.0" prefWidth="266.0" promptText="Email" />
-            <PasswordField layoutX="94.0" layoutY="174.0" prefHeight="26.0" prefWidth="266.0" promptText="Password" />
-            <Button layoutX="170.0" layoutY="270.0" mnemonicParsing="false" style="-fx-background-color: #a55c24; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Se connecter" textAlignment="CENTER" textFill="WHITE">
+            <ImageView fitHeight="41.0" fitWidth="200.0" layoutX="120.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../photos/logo.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="usernameField" layoutX="94.0" layoutY="142.0" prefHeight="30.0" prefWidth="266.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="200.0" prefHeight="26.0" prefWidth="266.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="170.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" style="-fx-background-color: #a55c24; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Se connecter" textAlignment="CENTER" textFill="WHITE">
                <opaqueInsets>
                   <Insets top="5.0" />
                </opaqueInsets>
@@ -27,9 +35,22 @@
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Hyperlink layoutX="158.0" layoutY="224.0" text="Mot de passe oublié ?" />
-            <Label layoutX="191.0" layoutY="69.0" />
+            <Hyperlink layoutX="158.0" layoutY="250.0" text="Mot de passe oublié ?" />
+            <Label layoutX="191.0" layoutY="95.0" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="60.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../photos/email.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="59.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../photos/padlock.png" />
+               </image>
+            </ImageView>
          </children>
          <opaqueInsets>
             <Insets />
