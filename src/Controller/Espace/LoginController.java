@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +38,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private PasswordField passwordField;
+    private static String nameF;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -72,19 +75,30 @@ public class LoginController implements Initializable {
             String url = "jdbc:oracle:thin:@localhost:1521:XE";
             String name = "ferme";
             String pass = "ferme";
-        try (Connection connection = DriverManager.getConnection(url, name, pass)) {
-            String query = "SELECT * FROM Fermier f,Personne p WHERE f.idP=p.idP AND email = ? AND motDePasse = ?";
-            try (PreparedStatement ps = connection.prepareStatement(query)) {
+        try{
+            Connection connection = DriverManager.getConnection(url, name, pass);
+            String query = "SELECT p.nom,p.prenom FROM Fermier f,Personne p WHERE f.idP=p.idP AND email = ? AND motDePasse = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
                 ps.setString(1, username);
                 ps.setString(2, password);
-
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next(); // If a row is returned, the login is valid
-                }
-            }
+                ResultSet rs = ps.executeQuery();
+                
+                if (rs.next()) {
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            
+            // Assuming nameF is a field or variable of type that can accept Strings
+            nameF= nom + " " + prenom;
+             return true;
+                } 
+                
+                    // If a row is returned, the login is valid
+                
+            
             }catch( SQLException sqlE){
-            return false;
+            
         }
+        return false;
     }
         private void showLoginErrorPopup() {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -96,5 +110,8 @@ public class LoginController implements Initializable {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // User clicked OK
         }
+    }
+        public String getName() {
+        return  nameF;
     }
   }

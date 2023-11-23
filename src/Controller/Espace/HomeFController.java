@@ -29,12 +29,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.control.Label;
 /**
  * FXML Controller class
  *
  * @author ADMIN
  */
-public class HomeFController implements Initializable {
+public class HomeFController implements Initializable{
     @FXML
     private ImageView menu;
 
@@ -43,6 +44,8 @@ public class HomeFController implements Initializable {
 
     @FXML
     private AnchorPane sideBar;
+    @FXML
+    private Label labelUser;
     
     @FXML
     private void handleBatimentAction(ActionEvent event) {
@@ -66,6 +69,8 @@ public class HomeFController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        labelUser.setText("Bienvenue "+new LoginController().getName());
+        
         sideBar.setTranslateX(-176);
         menu.setOnMouseClicked(event -> { 
             TranslateTransition slide = new TranslateTransition();

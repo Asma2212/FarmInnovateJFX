@@ -195,7 +195,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="225.0" layoutY="21.0" text="Bienvenue dans l'espace fermier" textFill="#a6501b">
+                  <Label fx:id="labelUser" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="21.0" text="Bienvenue dans l'espace fermier" textAlignment="CENTER" textFill="#a6501b">
                      <font>
                         <Font name="High Tower Text" size="19.0" />
                      </font>
