@@ -75,6 +75,7 @@ public class BatimentsController implements Initializable {
     @FXML
     private MenuItem mofidbatlist;
     
+    private static String idBat;
      
     /**
      * Initializes the controller class.
@@ -97,6 +98,7 @@ public class BatimentsController implements Initializable {
         batimentsTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
+                        idBat = newValue.getId();
                         // If a row is selected, populate the input fields with the selected data
                         idTf.setText(newValue.getId());
                         nomTf.setText(newValue.getNom());
@@ -193,6 +195,7 @@ public class BatimentsController implements Initializable {
     @FXML
     private void modifBatListHandler(ActionEvent event) throws IOException{
         try {
+             
             // Get the current stage
             Stage currentStage = (Stage) batimentsTableView.getScene().getWindow();
 
@@ -222,6 +225,10 @@ public class BatimentsController implements Initializable {
         }
          
             
+    }
+    
+    public String getIdBat(){
+        return idBat;
     }
 
     

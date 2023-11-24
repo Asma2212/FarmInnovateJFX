@@ -61,6 +61,7 @@ public class BatimentAnimalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          returnbtn.setOnMouseClicked(event -> returnBtnHandler());
+         System.out.println(new BatimentsController().getIdBat());
     }    
 
     @FXML
