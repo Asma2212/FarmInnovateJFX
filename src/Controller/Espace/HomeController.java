@@ -58,11 +58,10 @@ public class HomeController implements Initializable {
         @FXML
     private void EspaceClientAction(ActionEvent event) {
         try{
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Espace/Login.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Espace/LoginClient.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
+         root1.setStyle("-fx-background-color: transparent;");
         Stage stage = new Stage();
-    //stage.initModality(Modality.APPLICATION_MODAL);
-    //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("FarmInnovate/Acceuil");
         stage.setScene(new Scene(root1));  
         stage.show();   

@@ -26,6 +26,7 @@ public class Responsable extends Personne implements IUser<Responsable>{
     private String motDePasse ;
     private int nbrHeure;
     private double salaireH ;
+    private int codeS ;
     private Set<Ouvrier> ouvriers ;
     private Set<Batiment> batiments;
     private Set<Plante> plantes;
@@ -41,13 +42,24 @@ public class Responsable extends Personne implements IUser<Responsable>{
     }
 
     
-    public Responsable(String motdepasse, int nbrHeure,double salaireH, int cin, String genre, String nom, String prenom, int numTel, Date dateNaiss, String email) {
+    public Responsable(String motdepasse, int nbrHeure,double salaireH,int codeS, int cin, String genre, String nom, String prenom, int numTel, Date dateNaiss, String email) {
         super(cin, genre, nom, prenom, numTel, dateNaiss, email);
+        this.codeS = codeS;
         this.productions = new HashMap<>();
         this.ouvriers = new HashSet<>();
         this.plantes = new HashSet<>();
         this.batiments = new HashSet<>();
         this.motDePasse = motdepasse;
+        this.nbrHeure = nbrHeure;
+        this.salaireH=salaireH;
+    }
+        public Responsable( int cin,String nom, String prenom, String genre,  int numTel, String email,int nbrHeure,double salaireH,int codeS) {
+        super(cin, genre, nom, prenom, numTel, null, email);
+        this.codeS = codeS;
+        this.productions = new HashMap<>();
+        this.ouvriers = new HashSet<>();
+        this.plantes = new HashSet<>();
+        this.batiments = new HashSet<>();
         this.nbrHeure = nbrHeure;
         this.salaireH=salaireH;
     }
@@ -151,7 +163,7 @@ public class Responsable extends Personne implements IUser<Responsable>{
         
     }
     //************************** Gestion de production ***********************//
-    public void ajouterProduction(Production p){
+  /*  public void ajouterProduction(Production p){
         productions.put(p.getRefP(),p);
     }
     public void modifierProduction(int refP,Scanner sc){
@@ -164,7 +176,7 @@ public class Responsable extends Personne implements IUser<Responsable>{
     }
     public void supprimerProduction(int refP){
         productions.remove(refP);
-    }
+    }*/
     @Override
     public void consulterProduction() {
         System.out.println("Productions :");
@@ -203,96 +215,9 @@ public class Responsable extends Personne implements IUser<Responsable>{
     ICalculSalaire calSalaire = (nbHeure, salaireHeure) -> nbHeure * salaireHeure;
     return calSalaire.calculSalaire(this.getNbrHeure(), this.getSalaireH());
     }
-    
-    public int menu(Scanner sc){
-        int choix,typeProd ;
-        Production prod = null;
-        do{
-        System.out.println("\n********* Gestion des Ouvriers **************\n ");
-        System.out.println("1-Ajouter un ouvier\n");
-        System.out.println("2-Modifier un ouvrier\n");
-        System.out.println("3-Supprimer un ouvrier\n");
-        System.out.println("4-Afficher ouvrier par id\n");
-        System.out.println("5-Consulter la liste des ouvrier\n");
-        System.out.println("********* Gestion de Productions **************\n ");
-        System.out.println("6-Ajouter une Production\n");
-        System.out.println("7-Consulter les productions\n");
-        System.out.println("8-modifier une production\n");
-        System.out.println("9-Supprimer une production\n");
-        System.out.println("********* Gestion de profil **************\n ");
-        System.out.println("10-Modifier mes donneés\n");
-        System.out.println("11-Consulter mon profil\n");
-        System.out.println("12- retour \n");
-        choix=sc.nextInt();
-        switch(choix){
-            case 1 -> {
-                Ouvrier o= new Ouvrier();
-                o.saisir(sc);
-                ajouterOuvrier(o);
-            }
-            case 2 -> {
-                System.out.println("entrer l'Id de l'ouvrier à modifier ");
-                int idO = sc.nextInt();
-                this.modifierOuvrier(idO,sc);
-            }
-            case 3 -> {
-                System.out.println("entrer l'id de l'ouvrier à supprimer ");
-                int idO = sc.nextInt();
-                this.supprimerOuvrier(idO);
-            }
-            case 4 -> {
-                System.out.println("entrer l'id de l'ouvrier ");
-                int idO = sc.nextInt();
-                getOuvrierById(idO);
-            }
-            case 5 -> {
-                 consulterOuvriers();
-            }
-            case 6 -> {
-                do{
-                System.out.println("\t1) Production vegetale");
-                System.out.println("\t2) Production animale");
-                System.out.println("\t3) Retour");
-                typeProd = sc.nextInt();
-                if(typeProd == 1)
-                {
-                    prod = new ProdVegetal();
-                    prod.saisir(sc);
-                    ajouterProduction(prod);
-                }
-                else if(typeProd == 2)
-                {
-                    prod = new ProdAnimal();
-                    prod.saisir(sc);
-                    ajouterProduction(prod);
-                }     
-                }while(typeProd != 3);
-            }
-            case 7 -> {
-                 consulterProduction();
-            }
-            case 8 -> {
-                System.out.println("donner la ref à modifier "); 
-                int refP = sc.nextInt();
-                modifierProduction(refP,sc);   
-            }
-            case 9 -> {
-                System.out.println("donner la ref Production "); 
-                int refP = sc.nextInt();
-                supprimerProduction(refP);  
-            }
-            case 10 -> {
-                modifier(sc);
-            }
-            case 11 -> {
-                System.out.println(this.toString());
-            }
-        }
-        }while (choix!=12);
-        return -1 ; 
-    }
     // ***********************  getters et setters  ****************************  //
 
+    
     public String getMotDePasse() {
         return motDePasse;
     }
@@ -324,7 +249,15 @@ public class Responsable extends Personne implements IUser<Responsable>{
     public void setOuvriers(Set<Ouvrier> ouvriers) {
         this.ouvriers = ouvriers;
     }
-    
 
+    public int getCodeS() {
+        return codeS;
+    }
+
+    public void setCodeS(int codeS) {
+        this.codeS = codeS;
+    }
+    
+    
 
 }

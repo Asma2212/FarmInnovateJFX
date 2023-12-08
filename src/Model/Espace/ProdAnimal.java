@@ -26,7 +26,9 @@ public class ProdAnimal extends Production{
         this.nature = nature;
         this.dateProd=new Date();
     }
-    @Override 
+    
+    
+ /*   @Override 
     public void saisir(Scanner sc){
         int count =1;
         int choixNat;
@@ -83,11 +85,27 @@ public class ProdAnimal extends Production{
         }catch(ValeurHorsIntervalleException ve){
             System.out.println(ve.getMessage());
         }
-    }
+    }*/
     @Override 
     public String toString(){
         
-        return super.toString()+" nature : "+nature+" date Production : "+ dateProd;
+        return super.toString()+" nature : "+getNature()+" date Production : "+ getDateProd();
+    }
+
+    public NatureProdAnimal getNature() {
+        return nature;
+    }
+
+    public void setNature(NatureProdAnimal nature) {
+        this.nature = nature;
+    }
+
+    public Date getDateProd() {
+        return dateProd;
+    }
+
+    public void setDateProd(Date dateProd) {
+        this.dateProd = dateProd;
     }
     
     

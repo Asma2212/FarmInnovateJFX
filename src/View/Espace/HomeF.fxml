@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" stylesheets="@../../CSS/StyleHF.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace.HomeFController">
    <children>
@@ -82,7 +85,7 @@
                               <Font size="13.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton accessibleRole="MENU_BUTTON" onAction="#handleDeconnecterAction" prefHeight="38.0" prefWidth="143.0" styleClass="navBarItem" text="Se déconnecter">
+                        <JFXButton fx:id="compteBtn" accessibleRole="MENU_BUTTON" onAction="#handleDeconnecterAction" prefHeight="38.0" prefWidth="143.0" styleClass="navBarItem" text="Se déconnecter">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -108,16 +111,49 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="sideBar" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #954B30;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="sideBar" maxHeight="-Infinity" prefHeight="282.0" prefWidth="176.0" style="-fx-background-color: #954B30; -fx-border-color: white;" BorderPane.alignment="TOP_CENTER">
                <children>
-                  <VBox layoutX="50.0" layoutY="80.0" prefHeight="200.0" prefWidth="176.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                  <VBox layoutX="5.0" layoutY="23.0" prefHeight="502.0" prefWidth="174.0" AnchorPane.bottomAnchor="22.600000000000023" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.400000000000034" AnchorPane.topAnchor="23.0">
                      <children>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Map" textFill="WHITE">
+                        <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="147.0">
+                           <children>
+                              <ImageView fitHeight="44.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../photos/userC.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fx:id="nameTxt" fill="WHITE" strokeWidth="0.0" wrappingWidth="108.89895494282246">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="posteTxt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="104.29259490966797" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="7.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Line endX="63.0928955078125" endY="0.5928856134414673" startX="-100.0" stroke="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Line>
+                        <JFXButton fx:id="SecteurBtn" onAction="#handleSecteurAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Secteur" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -33;">
+                              <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -22;">
                                  <image>
                                     <Image url="@../../photos/field%20(1).png" />
                                  </image>
@@ -157,7 +193,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Responsables" textFill="WHITE">
+                        <JFXButton onAction="#handleResponsableAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Responsables" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -171,6 +207,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </JFXButton>
                         <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Fermier" textFill="WHITE">
                            <font>
@@ -190,18 +229,16 @@
                      </children>
                   </VBox>
                </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <BorderPane.margin>
+                  <Insets left="5.0" right="2.0" top="4.0" />
+               </BorderPane.margin>
             </AnchorPane>
          </left>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="labelUser" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="21.0" text="Bienvenue dans l'espace fermier" textAlignment="CENTER" textFill="#a6501b">
-                     <font>
-                        <Font name="High Tower Text" size="19.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            <Pane fx:id="bodyPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

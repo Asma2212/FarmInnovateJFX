@@ -91,7 +91,7 @@ public class Fermier extends Personne implements IUser<Fermier>{
     // ***********************  Manipulations ****************************  //
     
     //**********************Gestion des Secteurs **************************//
-    public void ajouterSecteur(Secteur s){
+  /*  public void ajouterSecteur(Secteur s){
         getSecteurs().add(s);
     }
     public void modifierSecteur(int codeS,Scanner sc){
@@ -140,7 +140,7 @@ public class Fermier extends Personne implements IUser<Fermier>{
                  test = true;         
         }
         return test;
-    }
+    }*/
     //**********************Gestion des responsables **************************//
     
     public void ajouterResponsable(int codeS,Responsable rep){
@@ -197,7 +197,7 @@ public class Fermier extends Personne implements IUser<Fermier>{
     public void consulterProduction() {
         
     }
-    public int menu(Scanner sc){
+  /*  public int menu(Scanner sc){
         int choix ;
         do{
         System.out.println("\n********* Gestion des secteurs **************\n ");
@@ -267,7 +267,7 @@ public class Fermier extends Personne implements IUser<Fermier>{
         }
         }while (choix!=11);
         return -1 ; 
-    }
+    }*/
     // ***********************  getters et setters  ****************************  //
 
     public String getMotDePasse() {

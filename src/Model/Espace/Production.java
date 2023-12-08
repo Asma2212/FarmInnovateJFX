@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author ADMIN
  */
-public class Production {
+public abstract class Production {
     private String refP;
     private int qteStock;
     private Double prix ;
@@ -25,7 +25,7 @@ public class Production {
         this.prix = prix;
     }
 
-    public void saisir(Scanner sc){
+ /*   public void saisir(Scanner sc){
         try{
             System.out.println("entrer la reference du produit : ");
             this.refP=sc.next();
@@ -48,7 +48,7 @@ public class Production {
         }catch(InputMismatchException e){
             System.out.println("vous n'avez pas inséré un entier");  
         } 
-    }
+    }*/
     @Override 
     public String toString(){
         return "RefP : "+refP+" Qte Stock : "+ qteStock+" prix : "+prix;

@@ -39,6 +39,8 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
     private static String nameF;
+    private static String poste;
+    private static int idP; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -89,6 +91,7 @@ public class LoginController implements Initializable {
             
             // Assuming nameF is a field or variable of type that can accept Strings
             nameF= nom + " " + prenom;
+            poste = "Fermier";
              return true;
                 } 
                 
@@ -111,7 +114,13 @@ public class LoginController implements Initializable {
             // User clicked OK
         }
     }
-        public String getName() {
+        public static String getName() {
         return  nameF;
     }
+        public static String getPoste(){
+            return poste;
+        }
+        public static int getIdP(){
+            return idP;
+        }
   }

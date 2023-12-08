@@ -10,14 +10,14 @@ package Model.Espace;
  */
 public class LigneCommande {
     private Production prod;
-    private int Qte;
+    private int qte;
 
     public LigneCommande() {
     }
 
-    public LigneCommande(Production prod, int Qte) {
+    public LigneCommande(Production prod, int qte) {
         this.prod = prod;
-        this.Qte = Qte;
+        this.qte = qte;
     }
 
     public Production getProd() {
@@ -29,11 +29,11 @@ public class LigneCommande {
     }
 
     public int getQte() {
-        return Qte;
+        return qte;
     }
 
-    public void setQte(int Qte) {
-        this.Qte = Qte;
+    public void setQte(int qte) {
+        this.qte = qte;
     }
     
     
