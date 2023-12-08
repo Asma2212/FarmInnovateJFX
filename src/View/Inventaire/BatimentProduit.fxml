@@ -13,25 +13,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" style="-fx-background-color: #E7CDB2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" style="-fx-background-color: #E7CDB2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Inventaire.BatimentProduitController">
    <children>
       <BorderPane prefHeight="647.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView prefHeight="447.0" prefWidth="859.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="produitTableView" prefHeight="447.0" prefWidth="859.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="41.0" text="ID" />
-                <TableColumn prefWidth="58.0" text="FORMULATION" />
-                  <TableColumn prefWidth="102.0" text="PERIODEAPP" />
-                  <TableColumn prefWidth="73.0" text="DOSERECOM" />
-                  <TableColumn prefWidth="44.0" text="QTNET" />
-                  <TableColumn prefWidth="65.0" text="NBRPROD" />
-                  <TableColumn prefWidth="91.0" text="FORMULATION" />
-                  <TableColumn prefWidth="51.0" text="TYPE" />
-                  <TableColumn prefWidth="69.0" text="COMPOSITION" />
-                  <TableColumn prefWidth="64.0" text="SUBACTIVE" />
-                  <TableColumn prefWidth="63.0" text="CULTURES" />
-                  <TableColumn prefWidth="75.0" text="RAVAGEURS" />
-                  <TableColumn prefWidth="63.0" text="DAR" />
+                <TableColumn fx:id="idColonne" prefWidth="50.399961829185486" text="ID" />
+                <TableColumn fx:id="formulationColonne" prefWidth="96.8000259399414" text="FORMULATION" />
+                  <TableColumn fx:id="periodeAppColonne" prefWidth="82.39999389648438" text="PERIODEAPP" />
+                  <TableColumn fx:id="doseRecmColonne" prefWidth="79.20001220703125" text="DOSERECOM" />
+                  <TableColumn fx:id="qtNetColonne" prefWidth="47.199951171875" text="QTNET" />
+                  <TableColumn fx:id="nbrProdColonne" prefWidth="74.4000244140625" text="NBRPROD" />
+                  <TableColumn fx:id="typeColonne" prefWidth="76.79998779296875" text="TYPE" />
+                  <TableColumn minWidth="0.0" prefWidth="0.0" text="TYPE" />
+                  <TableColumn fx:id="compositionColonne" prefWidth="90.39999389648438" text="COMPOSITION" />
+                  <TableColumn fx:id="subactiveColonne" prefWidth="70.39996337890625" text="SUBACTIVE" />
+                  <TableColumn fx:id="culturesColonne" prefWidth="63.20001220703125" text="CULTURES" />
+                  <TableColumn fx:id="ravageursColonne" prefWidth="76.0" text="RAVAGEURS" />
+                  <TableColumn fx:id="DARColonne" prefWidth="48.000048828125045" text="DAR" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -41,7 +41,7 @@
          <bottom>
             <HBox prefHeight="63.0" prefWidth="880.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #B5E61D;" text="Ajouter Pesticide">
+                  <Button fx:id="ajoutPestBtn" mnemonicParsing="false" onAction="#ajoutPestBtnHandler"  prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #B5E61D;" text="Ajouter Pesticide">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -49,7 +49,7 @@
                         <Insets left="500.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #B5E61D;" text="Ajouter Engrais">
+                  <Button fx:id="ajoutEngBtn" mnemonicParsing="false" onAction="#ajoutEngBtnHandler"  prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: #B5E61D;" text="Ajouter Engrais">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -63,7 +63,7 @@
          <top>
             <VBox prefHeight="80.0" prefWidth="880.0" style="-fx-background-color: #B05700;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="35.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="returnbtn" fitHeight="35.0" fitWidth="26.0" onMouseClicked="#returnBtnHandler" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../photos/fleche-cercle-gauche.png" />
                      </image>

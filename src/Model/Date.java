@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Date {
@@ -45,6 +46,10 @@ public class Date {
         this.annee = sc.nextInt();
     } while (this.annee < 0);
 }
+ //************************convertir une date en une localdate*****************  
+   public LocalDate toLocalDate() {
+        return LocalDate.of(annee, mois, jour);
+    }
 
  //************************Affichage*****************
    @Override

@@ -65,17 +65,15 @@ public class BatimentsController implements Initializable {
     @FXML
     private TableColumn<Batiment, String> typeColonne;
 
-     private ObservableList<Batiment> batimentsList;
-
-     private int currentId = 1;
+    private ObservableList<Batiment> batimentsList;
+  
+    private int currentId = 1;
     @FXML
     private MenuItem suppbat;
     @FXML
     private Label errorlabel;
     @FXML
     private MenuItem mofidbatlist;
-    
-    private static String idBat;
      
     /**
      * Initializes the controller class.
@@ -85,11 +83,10 @@ public class BatimentsController implements Initializable {
          // Initialize the ComboBox with the types
         ObservableList<String> types = FXCollections.observableArrayList("Animal", "Produit", "Materiel");
         typeCombobox.setItems(types);
-
+        
         // Initialize the TableView
         idColonne.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));
-       
+        nomColonne.setCellValueFactory(new PropertyValueFactory<>("nom"));       
         typeColonne.setCellValueFactory(new PropertyValueFactory<>("type"));
         // Create an empty list for batiments
         batimentsList = FXCollections.observableArrayList();
@@ -98,15 +95,11 @@ public class BatimentsController implements Initializable {
         batimentsTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        idBat = newValue.getId();
-                        // If a row is selected, populate the input fields with the selected data
                         idTf.setText(newValue.getId());
                         nomTf.setText(newValue.getNom());
-                        typeCombobox.setValue(newValue.getType());
+                        typeCombobox.setValue(newValue.getType()); 
                     }
-                });
-        
-                 
+                });              
     }    
 
     @FXML
@@ -119,7 +112,7 @@ public class BatimentsController implements Initializable {
         Batiment selectedBatiment = batimentsTableView.getSelectionModel().getSelectedItem();
 
         if (selectedBatiment != null && batimentsTableView.getItems().contains(selectedBatiment)) {
-            // Update the selected Batiment with the modified data
+            // mise a jour de l'objet batiment selectionné
             selectedBatiment.setNom(nom);
             selectedBatiment.setType(type);
             updateAlert(selectedBatiment);
@@ -191,44 +184,66 @@ public class BatimentsController implements Initializable {
             batimentsTableView.getItems().remove(selectedBatiment);
         clearFields();
     }
+    
 
     @FXML
     private void modifBatListHandler(ActionEvent event) throws IOException{
         try {
-             
-            // Get the current stage
             Stage currentStage = (Stage) batimentsTableView.getScene().getWindow();
 
             // Load the new interface
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Inventaire/BatimentAnimal.fxml"));
+          String fxmlPath = getFxmlPathForSelectedType();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
+          
+            if(fxmlPath.equals("/View/Inventaire/BatimentAnimal.fxml"))
+            {  
+                BatimentAnimalController animalController = loader.getController();
+                animalController.setBatiment(batimentsTableView.getSelectionModel().getSelectedItem());
+                System.out.println(batimentsTableView.getSelectionModel().getSelectedItem());
+            }
+            else if(fxmlPath.equals("/View/Inventaire/BatimentProduit.fxml")){
+                BatimentProduitController produitController = loader.getController();
+                produitController.setBatiment(batimentsTableView.getSelectionModel().getSelectedItem());
+                System.out.println(batimentsTableView.getSelectionModel().getSelectedItem());
+            }
+            else{
+                BatimentMaterielController materielController = loader.getController();
+                materielController.setBatiment(batimentsTableView.getSelectionModel().getSelectedItem());
+                System.out.println(batimentsTableView.getSelectionModel().getSelectedItem());
+            }
+            
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
             newStage.setScene(scene);
-
-            // Set the modality to APPLICATION_MODAL if you want the new stage to block input to the parent stage
             newStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Set the close request handler to show the current stage when the new stage is closed
-            newStage.setOnCloseRequest(event1 -> {
-                currentStage.show();
-            });
-
-            // Show the new stage
+            newStage.setOnCloseRequest(event1 -> { currentStage.show();});
             newStage.show();
-
-            // Hide the current stage
-            currentStage.hide();
+                currentStage.hide();
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception appropriately, for example, show an error message
-        }
-         
-            
+        }    
     }
     
-    public String getIdBat(){
-        return idBat;
+    private String getFxmlPathForSelectedType() {
+        String type = batimentsTableView.getSelectionModel().getSelectedItem().getType();
+        switch (type) {
+            case "Animal":
+                return "/View/Inventaire/BatimentAnimal.fxml";
+            case "Produit":
+                return "/View/Inventaire/BatimentProduit.fxml";
+            case "Materiel":
+                return "/View/Inventaire/BatimentMateriel.fxml";
+            default:
+                return "";
+        }
+    }
+    
+    @Override 
+    public String toString(){
+        String str="[ ";
+        for(Batiment bat: batimentsList) str+= bat+"\n";
+        return str+"]";
     }
 
     

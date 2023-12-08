@@ -3,12 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,10 +19,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Inventaire.BatimentAnimalController">
    <children>
-      <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="818.0" style="-fx-background-color: #E7CDB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#MouseClicked" prefHeight="621.0" prefWidth="818.0" style="-fx-background-color: #E7CDB2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="651.0" prefWidth="236.0" style="-fx-background-color: #B05700;" BorderPane.alignment="CENTER">
                <children>
@@ -28,7 +32,7 @@
                         <Image url="@../../photos/fleche-cercle-gauche.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="20.0" top="40.0" />
+                        <Insets left="20.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="33.0" prefWidth="175.0" text="Ajouter un animal" textFill="WHITE">
@@ -56,17 +60,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="especeTf" prefHeight="35.0" prefWidth="231.0" promptText="Espece">
+                  <ComboBox fx:id="combobox" prefHeight="34.0" prefWidth="201.0" promptText="Espece">
                      <VBox.margin>
-                        <Insets left="20.0" right="15.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <ComboBox fx:id="combobox" prefHeight="34.0" prefWidth="201.0" promptText="Race">
-                     <VBox.margin>
-                        <Insets left="20.0" top="20.0" />
+                        <Insets left="20.0" top="10.0" />
                      </VBox.margin>
                   </ComboBox>
                   <HBox prefHeight="31.0" prefWidth="294.0">
@@ -75,8 +71,11 @@
                            <padding>
                               <Insets left="20.0" />
                            </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="genre" />
+                           </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="malbtn" mnemonicParsing="false" text="Male">
+                        <RadioButton fx:id="malbtn" mnemonicParsing="false" text="Male" toggleGroup="$genre">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -116,23 +115,33 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="211.20001220703125">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Text>
                </children>
             </VBox>
          </left>
          <center>
             <TableView fx:id="animalTableView" prefHeight="501.0" prefWidth="640.0" BorderPane.alignment="CENTER">
               <columns>
-                  <TableColumn prefWidth="60.79997098445892" text="ID" />
-                <TableColumn prefWidth="101.59998321533203" text="ESPECE" />
-                <TableColumn minWidth="7.99993896484375" prefWidth="94.39996337890625" text="RACE" />
-                  <TableColumn prefWidth="84.0" text="GENRE" />
-                  <TableColumn prefWidth="121.59991455078125" text="DATE NAISSANCE" />
-                  <TableColumn minWidth="8.7999267578125" prefWidth="87.99996948242188" text="POIDS" />
-                  <TableColumn minWidth="0.0" prefWidth="75.199951171875" text="SUPP" />
+                  <TableColumn fx:id="idColonne" prefWidth="84.0" text="ID" />
+                <TableColumn fx:id="especeColonne" prefWidth="148.0" text="ESPECE" />
+                  <TableColumn fx:id="genreColonne" prefWidth="107.20001220703125" text="GENRE" />
+                  <TableColumn fx:id="dateNaissColonne" prefWidth="166.39996337890625" text="DATE NAISSANCE" />
+                  <TableColumn fx:id="poidsColonne" minWidth="8.7999267578125" prefWidth="99.19998779296873" text="POIDS" />
               </columns>
                <BorderPane.margin>
-                  <Insets bottom="80.0" left="10.0" right="10.0" top="70.0" />
+                  <Insets bottom="80.0" left="20.0" right="20.0" top="70.0" />
                </BorderPane.margin>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="suppbtn" mnemonicParsing="false" onAction="#suppBtnHandler" text="supprimer" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
          </center>
       </BorderPane>
