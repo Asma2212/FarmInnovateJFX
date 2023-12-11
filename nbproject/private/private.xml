@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/BatimentsController.java</file>
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Controller/Inventaire/PesticideSaisieController.java</file>
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Model/Inventaire/Pesticide.java</file>
@@ -20,6 +21,24 @@
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Model/Inventaire/Plante.java</file>
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/FarmInnovateFX/FarmInnovateFX.java</file>
             <file>file:/C:/Users/abirb/Documents/GitHub/FarmInnovateJFX/src/Model/Inventaire/Produit.java</file>
+=======
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/OuvriersController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/FarmInnovateFX/FarmInnovateFX.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/HomeController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/FormOuvrierController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/HomeFController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/LoginClientController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/OuvriersController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/FarmInnovateFX/FarmInnovateFX.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/HomeController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/FormOuvrierController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/HomeFController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Documents/NetBeansProjects/FarmInnovateFX/src/Controller/Espace/LoginClientController.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

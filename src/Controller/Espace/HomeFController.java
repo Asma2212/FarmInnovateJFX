@@ -81,9 +81,27 @@ public class HomeFController implements Initializable{
         }
     }
     @FXML
-    private void handlePlanteAction(ActionEvent event) {}
+    private void handlePlanteAction(ActionEvent event) {
+                bodyPane.getChildren().clear();
+                      try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Inventaire/Plante.fxml"));
+            BorderPane body = loader.load();
+            bodyPane.getChildren().add(body);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
-    private void handleProductionAction(ActionEvent event) {}
+    private void handleProductionAction(ActionEvent event) {
+     bodyPane.getChildren().clear();
+            try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Inventaire/ProdAnimal.fxml"));
+            BorderPane body = loader.load();
+            bodyPane.getChildren().add(body);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void handleDeconnecterAction(ActionEvent event) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
