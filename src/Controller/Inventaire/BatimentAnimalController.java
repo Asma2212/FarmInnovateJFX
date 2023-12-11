@@ -110,6 +110,7 @@ public class BatimentAnimalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          returnbtn.setOnMouseClicked(event -> returnBtnHandler());
+         
          ObservableList<Espece> especes = FXCollections.observableArrayList();
          for(Espece esp : Espece.values()) {
                 especes.add(esp);
@@ -141,7 +142,6 @@ public class BatimentAnimalController implements Initializable {
                             fembtn.setSelected(false);
                             malbtn.setSelected(false);
                         }
-                        
                     }
                 }); 
 
@@ -240,7 +240,7 @@ public class BatimentAnimalController implements Initializable {
     
     private void clearFields(){
         idLabel.setText("");  
-        combobox.getSelectionModel().clearSelection();
+       // combobox.getSelectionModel().clearSelection();
         fembtn.setSelected(false);
         malbtn.setSelected(false);
         dateTf.setValue(null);
@@ -258,7 +258,7 @@ public class BatimentAnimalController implements Initializable {
     
     @FXML
     private void suppBtnHandler(ActionEvent event) {
-         Animal selectedAnimal = animalTableView.getSelectionModel().getSelectedItem();
+        Animal selectedAnimal = animalTableView.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);

@@ -21,7 +21,7 @@ public class FarmInnovateFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/Inventaire/Batiments.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/Inventaire/ProdAnimal.fxml"));
         Scene scene = new Scene(root);
      
         stage.setScene(scene);

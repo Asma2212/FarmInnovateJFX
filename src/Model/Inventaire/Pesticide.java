@@ -3,44 +3,29 @@ package Model.Inventaire;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Pesticide extends Produit{
 
-    private TypePesticide typepest;
-    private String subActive;
-    private String cultures ;
-    private String ravageurs ;
+    private TypePesticide type;
     private int DAR;
     
     
     //constructeur
-    public Pesticide(){}
     
-    public Pesticide(TypePesticide typepest, String subActive, String cultures,String ravageurs ){
-        super();
-        this.typepest=typepest;
-        this.subActive=subActive;
-        this.cultures=cultures;
-        this.ravageurs=ravageurs;
+    
+    public Pesticide(String idProduit, String formulation, String periodeApp, double doseRec, double qtNet, int nbrProd,TypePesticide type,int DAR){
+        super(idProduit, formulation,  periodeApp, doseRec, qtNet, nbrProd);
+        this.type=type;
+        this.DAR=DAR;
     }
-    
+    public Pesticide(){}
     //Getters and Setters
-    public TypePesticide getTypepest() { return typepest; }
+    public TypePesticide getType() { return type; }
 
-    public void setTypepest(TypePesticide typepest) { this.typepest = typepest; }
+    public void setType(TypePesticide typepest) { this.type = typepest; }
 
-    public String getSubActive() { return subActive; }
-
-    public void setSubActive(String subActive) { this.subActive = subActive; }
-
-    public String getCultures() { return cultures; }
- 
-    public void setCultures(String cultures) { this.cultures = cultures; }
-
-    public String getRavageurs() { return ravageurs; }
-
-    public void setRavageurs(String ravageurs) { this.ravageurs = ravageurs; }
 
     public int getDAR() { return DAR; }
 
@@ -51,7 +36,13 @@ public class Pesticide extends Produit{
     //toString 
     @Override
     public String toString() {
-        return super.toString() + ", typepest: " + getTypepest() + ", subActive: " + getSubActive() + ", cultures:["+cultures+"], ravageurs:["+ravageurs+ "], DAR: " + getDAR();
+        return super.toString() + ", typepest: " + getType() + "], DAR: " + getDAR();
     }
-  
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Pesticide other = (Pesticide) obj;
+        return Objects.equals(idProduit, other.idProduit);
+    }
 }

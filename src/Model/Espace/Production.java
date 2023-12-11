@@ -12,9 +12,9 @@ import java.util.Scanner;
  * @author ADMIN
  */
 public abstract class Production {
-    private String refP;
-    private int qteStock;
-    private Double prix ;
+    protected String refP;
+    protected int qteStock;
+    protected Double prix ;
 
     public Production() {
     }

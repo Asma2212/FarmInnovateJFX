@@ -12,12 +12,12 @@ public class Plante {
     private double qtEauJour;
     
  //************************Constructers*******************   
-    public Plante(String idPlante, String culture, String nature, String saisonRecolte, double qtEaujour){
+    public Plante(String idPlante, String culture, String nature, String saisonRecolte, double qt){
         this.idPlante=idPlante;
         this.culture= culture;
         this.nature=nature;
         this.saisonRecolte=saisonRecolte;
-        this.qtEauJour=(double) qtEauJour;
+        this.qtEauJour=qt;
     }
     public Plante(){}
     
@@ -72,27 +72,6 @@ public class Plante {
     @Override 
     public String toString(){
         return "idPlante: "+this.idPlante+", culture: "+this.culture+", nature: "+this.nature+", saisonRecolte: "+this.saisonRecolte+", Quantite d'eau par jour: "+this.qtEauJour;
-    }
-//***********************Modification********************    
-    public void modifier(){
-        Scanner sc = new Scanner(System.in);
-        try{
-            System.out.println("modification de la plante");
-            int x;
-           do{ 
-            System.out.println("selectionnez une nature: 1.pérenne, 2.annuelle");
-            x=sc.nextInt();}
-            while(x != 1 && x != 2);
-            if(x==1) this.nature="pérenne";
-            else this.nature="annuelle";
-            sc.nextLine();
-            System.out.println("entrez la saison de recolte");
-            this.saisonRecolte=sc.nextLine();
-            System.out.println("entrez la quantite d'eau nessecaire par jour");
-            this.qtEauJour= sc.nextDouble();}
-        catch(InputMismatchException e){
-            System.out.println("La valeur entrée n'est pas valide.");
-        }
     }
   
     

@@ -67,7 +67,7 @@ public class BatimentsController implements Initializable {
 
     private ObservableList<Batiment> batimentsList;
   
-    private int currentId = 1;
+    private static int currentId = 1;
     @FXML
     private MenuItem suppbat;
     @FXML
@@ -192,7 +192,7 @@ public class BatimentsController implements Initializable {
             Stage currentStage = (Stage) batimentsTableView.getScene().getWindow();
 
             // Load the new interface
-          String fxmlPath = getFxmlPathForSelectedType();
+            String fxmlPath = getFxmlPathForSelectedType();
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
           

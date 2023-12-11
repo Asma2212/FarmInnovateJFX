@@ -24,7 +24,7 @@ public class ProdAnimal extends Production{
     public ProdAnimal(NatureProdAnimal nature, Date dateProd, String refP, int qteStock, Double prix) {
         super(refP, qteStock, prix);
         this.nature = nature;
-        this.dateProd=new Date();
+        this.dateProd=dateProd;
     }
     
     

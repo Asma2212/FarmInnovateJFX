@@ -7,12 +7,12 @@ import java.util.logging.Logger;
 
 public class Produit {
     
-    private String idProduit;
-    private String formulation;
-    private String periodeApp;
-    private double doseRec;
-    private double qtNet;
-    private int nbrProd;
+    protected String idProduit;
+    protected String formulation;
+    protected String periodeApp;
+    protected double doseRec;
+    protected double qtNet;
+    protected int nbrProd;
     
     public Produit(String idProduit, String formulation, String periodeApp, double doseRec, double qtNet, int nbrProd){
         this.idProduit=idProduit;
