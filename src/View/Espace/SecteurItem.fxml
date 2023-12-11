@@ -21,35 +21,35 @@
                <children>
                   <VBox prefHeight="202.0" prefWidth="230.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="37.0" prefWidth="246.0">
+                        <HBox alignment="CENTER" prefHeight="33.0" prefWidth="218.0">
                            <children>
-                              <TextField fx:id="nomSecteur" prefHeight="36.0" prefWidth="203.0" style="-fx-background-color: transparent; -fx-font-family: Cambria;" text="Secteur">
+                              <TextField fx:id="nomSecteur" prefHeight="35.0" prefWidth="192.0" style="-fx-background-color: transparent; -fx-font-family: Cambria;" text="Secteur">
                                  <font>
-                                    <Font size="17.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextField>
                               <TextField fx:id="idSecteur" alignment="CENTER" prefHeight="36.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="IdS">
                                  <font>
-                                    <Font name="Cambria Bold" size="16.0" />
+                                    <Font name="Cambria Bold" size="15.0" />
                                  </font>
                               </TextField>
-                              <ImageView fitHeight="25.0" fitWidth="23.0" onMouseClicked="#modifSecteur" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="27.0" fitWidth="29.0" onMouseClicked="#modifSecteur" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../photos/edit.png" />
                                  </image>
                                  <HBox.margin>
-                                    <Insets right="2.0" />
+                                    <Insets right="5.0" />
                                  </HBox.margin>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#deleteSecteur" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="26.0" fitWidth="31.0" onMouseClicked="#deleteSecteur" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../photos/close1.png" />
                                  </image>
                                  <HBox.margin>
-                                    <Insets bottom="3.0" left="1.0" right="1.0" top="3.0" />
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                                  </HBox.margin>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -142,7 +142,7 @@
                         </VBox>
                         <Pane prefHeight="62.0" prefWidth="230.0">
                            <children>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="206.0" layoutY="-11.0" onMouseClicked="#valideModifSecteur" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="206.0" layoutY="-11.0" onMouseClicked="#modifSecteur" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../photos/check1.png" />
                                  </image>

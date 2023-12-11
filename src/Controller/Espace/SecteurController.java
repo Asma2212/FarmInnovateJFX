@@ -36,41 +36,43 @@ public class SecteurController implements Initializable {
 
     @FXML
     private ScrollPane scroll;
-    
+
     @FXML
     private GridPane grid;
     private List<Secteur> secteurs = new ArrayList<>();
-    
-    Connection connection ;
+
+    Connection connection;
+
     @FXML
     public void handleAjouterSecteur(ActionEvent event) {
-                        Secteur secteur = new Secteur(0,"Nom");
-                        secteurs.add(0,secteur);
-                setAllItems(0,1);
-        
+        Secteur secteur = new Secteur(0, "Nom");
+        secteurs.add(0, secteur);
+        setAllItems(0, 1);
+
     }
-        private List<Secteur> getData() {
+
+    private List<Secteur> getData() {
         List<Secteur> sect = new ArrayList<>();
         Secteur secteur;
 
-        secteur = new Secteur(0,"Animaux");
+        secteur = new Secteur(0, "Animaux");
         sect.add(secteur);
-        secteur = new Secteur(1,"Plante");
+        secteur = new Secteur(1, "Plante");
         sect.add(secteur);
-        secteur = new Secteur(2,"Materiel");
+        secteur = new Secteur(2, "Materiel");
         sect.add(secteur);
-        secteur = new Secteur(3,"Sect1");
+        secteur = new Secteur(3, "Sect1");
         sect.add(secteur);
-        secteur = new Secteur(4,"Sect2");
+        secteur = new Secteur(4, "Sect2");
         sect.add(secteur);
-        secteur = new Secteur(5,"Sect3");
+        secteur = new Secteur(5, "Sect3");
         sect.add(secteur);
         return sect;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                try {
+        try {
             Class.forName("oracle.jdbc.OracleDriver");
         } catch (ClassNotFoundException cnf) {
             System.out.println("class not found exception ");
@@ -87,17 +89,18 @@ public class SecteurController implements Initializable {
             while (rs.next()) {
                 String codeS = rs.getString("codeS");
                 String nomS = rs.getString("nomSecteur");
-                Secteur s = new Secteur (Integer.parseInt(codeS),nomS);
+                Secteur s = new Secteur(Integer.parseInt(codeS), nomS);
                 secteurs.add(s);
             }
+            System.out.println("taille" + secteurs.size());
         } catch (SQLException sqlE) {
             System.out.println("SQL:" + sqlE.getMessage());
         }
-        //secteurs.addAll(getData());
-        setAllItems(0,1);
-        
-    }  
-   public void setAllItems(int column,int row){
+        setAllItems(0, 1);
+
+    }
+
+    public void setAllItems(int column, int row) {
         try {
             for (int i = 0; i < secteurs.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -111,7 +114,7 @@ public class SecteurController implements Initializable {
                     row++;
                 }
 
-                grid.add(anchorPane, column++, row); 
+                grid.add(anchorPane, column++, row);
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -127,5 +130,5 @@ public class SecteurController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-   } 
+    }
 }

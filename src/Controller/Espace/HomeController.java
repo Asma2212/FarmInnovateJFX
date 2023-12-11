@@ -40,9 +40,7 @@ public static String role ;
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         }
-
     }
-
     @FXML
     private void EspaceResponsableAction(ActionEvent event) {
         try {

@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import java.util.Comparator;
 
 /**
  * FXML Controller class
@@ -69,13 +70,16 @@ public class ResponsablesController implements Initializable {
         nbreH.setCellValueFactory(new PropertyValueFactory<>("nbrHeure"));
         motDePasse.setCellValueFactory(new PropertyValueFactory<>("motDePasse"));
         salH.setCellValueFactory(new PropertyValueFactory<>("salaireH"));
-        cSecteur.setCellValueFactory(new PropertyValueFactory<>("codeS"));
-        
-        listeResp.addAll(new Responsable(123456, "Bey", "Asma", "F", 55436345, "a.b@g.c","111111", 15, 25.0, 1),
-                new Responsable(45678, "Belhedi", "Abir", "F", 55411345, "B.a@g.c","222222", 20, 45.0, 2),
-                new Responsable(111111, "Ben Abid", "Ghayth", "H", 99346345, "ba.g@g.c","333333", 30, 60.0, 3));
-        
-        listeResp.stream().map(r-> r.getCodeS()+r.getCodeS()).forEach(System.out::println);
+        cSecteur.setCellValueFactory(new PropertyValueFactory<>("codeS"));      
+        listeResp.addAll(new Responsable(123456, "Bey", "Asma", "F", 55436345, "asma.b@g.c","111111", 15, 25.0, 1),
+                new Responsable(45678, "Belhedi", "Abir", "F", 55411345, "abir.belh@g.c","222222", 20, 45.0, 2),
+                new Responsable(12315, "Henchiri", "Ahmed", "H", 98201234, "ahmed.hichri@gmail.com","333333", 30, 60.0, 3),
+                new Responsable(32161, "Bouhlel", "Amina", "F", 986372, "amina.bouhlel@example.com","333333", 30, 60.0, 3),
+                new Responsable(76621, "Elketeb", "Adnen", "H", 54617123, "ba.g@g.c","333333", 30, 60.0, 3),
+                new Responsable(98819, "Boukhadhra", "Jihen", "F", 98234112, "jihen.bkh@gmail.com","333333", 30, 60.0, 3),
+                new Responsable(30012, "Kahlaoui", "Charfeddin", "H", 55231451, "charf.kah@gmail.com","333333", 30, 60.0, 3));
+  
+        listeResp.stream().sorted(Comparator.comparingInt(Responsable::getNbrHeure));
         table.setItems(listeResp);
 
     }

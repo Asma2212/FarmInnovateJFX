@@ -96,8 +96,9 @@ public class FormResponsableController implements Initializable {
                     if(rs.next()){
                         String nomS = rs.getString("nomSecteur");
                         String selectedSect = c+":"+nomS;
-                        secteurCd.setItems(FXCollections.observableArrayList(selectedSect));
-                        secteurCd.getSelectionModel().selectFirst(); 
+                        secteurCd.setValue(selectedSect);
+                        // secteurCd.setItems(FXCollections.observableArrayList(selectedSect));
+                       // secteurCd.getSelectionModel().selectFirst(); 
                     }
                 } catch (SQLException ex) {
                         System.out.println("SQL Exception: " + ex.getMessage());
@@ -144,8 +145,9 @@ public class FormResponsableController implements Initializable {
 
     @FXML
     private void handleEnregistrer(ActionEvent event) {
-
+        System.out.println("1111");
         if (isInputValid()) {
+            System.out.println("222");
             responsable.setCin(Integer.parseInt(cin.getText()));
             responsable.setNom(nom.getText());
             responsable.setPrenom(prenom.getText());
@@ -155,9 +157,9 @@ public class FormResponsableController implements Initializable {
             responsable.setEmail(email.getText());
             responsable.setMotdepasse(motDePasse.getText());
             int cd = 0;
-            if (secteurCd.getValue() != null) {
+           /* if (secteurCd.getValue() != null) {
                 cd = Integer.parseInt(secteurCd.getValue().toString());
-            }
+            }*/
             responsable.setCodeS(cd);
             if (Homme.isSelected()) {
                 responsable.setGenre("H");
@@ -167,10 +169,12 @@ public class FormResponsableController implements Initializable {
             if (secteurCd.getSelectionModel().getSelectedItem() != null) {
                 String selectedValue = secteurCd.getSelectionModel().getSelectedItem();
                 String codeSString = selectedValue.substring(0, selectedValue.indexOf(":"));
+                System.out.println("heey"+codeSString);
                 try {
                     int codeS = Integer.parseInt(codeSString);
                     responsable.setCodeS(codeS);
                 } catch (NumberFormatException e) {}
+                
             }
 
             dialogStage.close();

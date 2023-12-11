@@ -111,9 +111,9 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="sideBar" maxHeight="-Infinity" prefHeight="282.0" prefWidth="176.0" style="-fx-background-color: #954B30; -fx-border-color: white;" BorderPane.alignment="TOP_CENTER">
+            <AnchorPane fx:id="sideBar" maxHeight="-Infinity" prefHeight="570.0" prefWidth="180.0" style="-fx-background-color: #954B30; -fx-border-color: white;" BorderPane.alignment="TOP_CENTER">
                <children>
-                  <VBox layoutX="7.2" layoutY="24.8" prefHeight="282.0" prefWidth="168.0" spacing="5.0" AnchorPane.bottomAnchor="22.600000000000023" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="24.0">
+                  <VBox layoutX="8.0" layoutY="25.6" prefHeight="300.0" prefWidth="166.0" spacing="5.0" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="25.0">
                      <children>
                         <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="147.0">
                            <children>
@@ -163,21 +163,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Clients" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -24;">
-                                 <image>
-                                    <Image url="@../../photos/users-avatar.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
                         <JFXButton onAction="#handleOuvrierAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Ouvriers" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
@@ -211,23 +196,23 @@
                               <Insets />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton graphicTextGap="0.0" onAction="#handleDeconnecterAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Deconnexion" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -6;">
-                                 <image>
-                                    <Image url="@../../photos/lougout1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
                      </children>
                   </VBox>
+                  <JFXButton graphicTextGap="0.0" layoutX="2.0" layoutY="518.0" onAction="#handleDeconnecterAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Deconnexion" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -6;">
+                           <image>
+                              <Image url="@../../photos/lougout1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
                </children>
                <effect>
                   <DropShadow />
