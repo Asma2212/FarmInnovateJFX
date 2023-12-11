@@ -113,7 +113,7 @@
          <left>
             <AnchorPane fx:id="sideBar" maxHeight="-Infinity" prefHeight="282.0" prefWidth="176.0" style="-fx-background-color: #954B30; -fx-border-color: white;" BorderPane.alignment="TOP_CENTER">
                <children>
-                  <VBox layoutX="5.0" layoutY="23.0" prefHeight="502.0" prefWidth="174.0" AnchorPane.bottomAnchor="22.600000000000023" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.400000000000034" AnchorPane.topAnchor="23.0">
+                  <VBox layoutX="7.2" layoutY="24.8" prefHeight="282.0" prefWidth="168.0" spacing="5.0" AnchorPane.bottomAnchor="22.600000000000023" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="24.0">
                      <children>
                         <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="147.0">
                            <children>
@@ -178,7 +178,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Ouvriers" textFill="WHITE">
+                        <JFXButton onAction="#handleOuvrierAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Ouvriers" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -211,14 +211,14 @@
                               <Insets />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Fermier" textFill="WHITE">
+                        <JFXButton graphicTextGap="0.0" onAction="#handleDeconnecterAction" prefHeight="38.0" prefWidth="176.0" styleClass="sideBarItem" text="Deconnexion" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -22;">
+                              <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -6;">
                                  <image>
-                                    <Image url="@../../photos/farmerW.png" />
+                                    <Image url="@../../photos/lougout1.png" />
                                  </image>
                               </ImageView>
                            </graphic>

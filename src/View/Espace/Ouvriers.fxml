@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace.ResponsablesController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace.OuvriersController">
    <children>
-      <Button layoutX="738.0" layoutY="21.0" mnemonicParsing="false" onAction="#supprimerResponsable" prefHeight="42.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #c11b1b; -fx-border-radius: 5; -fx-border-width: 2;" text="Supprimer " textFill="RED">
+      <Button layoutX="738.0" layoutY="21.0" mnemonicParsing="false" onAction="#supprimerOuvrier" prefHeight="42.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #c11b1b; -fx-border-radius: 5; -fx-border-width: 2;" text="Supprimer " textFill="RED">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -27,7 +27,7 @@
             <Image url="@../../photos/user%20(1).png" />
          </image>
       </ImageView>
-      <Button layoutX="479.0" layoutY="22.0" mnemonicParsing="false" onAction="#ajouterResponsable" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #6577ec; -fx-border-radius: 5; -fx-border-width: 2;" text="Ajouter " textFill="#0f2b7e">
+      <Button layoutX="479.0" layoutY="22.0" mnemonicParsing="false" onAction="#ajouterOuvrier" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #6577ec; -fx-border-radius: 5; -fx-border-width: 2;" text="Ajouter " textFill="#0f2b7e">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -40,7 +40,7 @@
             <Image url="@../../photos/social.png" />
          </image>
       </ImageView>
-      <Button layoutX="607.0" layoutY="21.0" mnemonicParsing="false" onAction="#modifierResponsable" prefHeight="42.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #c1ac58; -fx-border-radius: 5; -fx-border-width: 2;" text="Modifier " textFill="#a1830c">
+      <Button layoutX="607.0" layoutY="21.0" mnemonicParsing="false" onAction="#modifierOuvrier" prefHeight="42.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-color: #c1ac58; -fx-border-radius: 5; -fx-border-width: 2;" text="Modifier " textFill="#a1830c">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -56,24 +56,18 @@
       </ImageView>
       <TableView fx:id="table" fixedCellSize="28.0" layoutX="19.0" layoutY="76.8" maxHeight="471.0" maxWidth="846.0" minHeight="471.0" minWidth="812.0" onMouseClicked="#afficherConsole" prefHeight="471.0" prefWidth="846.0" style="-fx-selection-bar: #f2c2a4; -fx-border-color: #2d3d0a; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.9), 10, 0, 0, 3); -fx-font-size: 13px;" stylesheets="@../../CSS/tabView.css" AnchorPane.topAnchor="76.8">
         <columns>
-          <TableColumn fx:id="cin" prefWidth="75.0" style="-fx-border-color: #2d3d0a;" text="CIN" />
-          <TableColumn fx:id="nom" prefWidth="75.0" style="-fx-border-color: #2d3d0a;" text="Nom" />
-            <TableColumn fx:id="prenom" prefWidth="75.0" style="-fx-border-color: #2d3d0a;" text="Prenom" />
-            <TableColumn fx:id="genre" prefWidth="52.0" style="-fx-border-color: #2d3d0a;" text="Genre" />
-            <TableColumn fx:id="numTel" prefWidth="89.5999755859375" style="-fx-border-color: #2d3d0a;" text="NumTel" />
-            <TableColumn prefWidth="191.19992065429688" style="-fx-border-color: #2d3d0a;" text="Salaire">
+          <TableColumn fx:id="cin" prefWidth="90.39999389648438" style="-fx-border-color: #2d3d0a;" text="CIN" />
+          <TableColumn fx:id="nom" prefWidth="96.0" style="-fx-border-color: #2d3d0a;" text="Nom" />
+            <TableColumn fx:id="prenom" prefWidth="92.800048828125" style="-fx-border-color: #2d3d0a;" text="Prenom" />
+            <TableColumn fx:id="genre" prefWidth="79.199951171875" style="-fx-border-color: #2d3d0a;" text="Genre" />
+            <TableColumn fx:id="numTel" prefWidth="124.800048828125" style="-fx-border-color: #2d3d0a;" text="NumTel" />
+            <TableColumn maxWidth="7000.0" minWidth="129.60003662109375" prefWidth="196.0" style="-fx-border-color: #2d3d0a;" text="Salaire">
                <columns>
                   <TableColumn fx:id="nbreH" prefWidth="86.39996337890625" style="-fx-border-color: #2d3d0a;" text="nbre Heure" />
                   <TableColumn fx:id="salH" prefWidth="100.0" style="-fx-border-color: #2d3d0a;" text="Salaire Heure" />
                </columns>
             </TableColumn>
-            <TableColumn maxWidth="7000.0" minWidth="200.0" prefWidth="239.20001220703125" style="-fx-border-color: #2d3d0a;" text="Compte">
-               <columns>
-                  <TableColumn fx:id="email" prefWidth="130.0" style="-fx-border-color: #2d3d0a;" text="Email" />
-                  <TableColumn fx:id="motDePasse" prefWidth="110.0" style="-fx-border-color: #2d3d0a;" text="Mot de passe" />
-               </columns>
-            </TableColumn>
-            <TableColumn fx:id="cSecteur" prefWidth="45.60009765625" style="-fx-border-color: #2d3d0a;" text="codeS" />
+            <TableColumn fx:id="taches" prefWidth="169.5999755859375" style="-fx-border-color: #2d3d0a;" text="Taches" />
         </columns>
          <effect>
             <DropShadow />

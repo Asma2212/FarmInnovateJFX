@@ -14,20 +14,34 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Espace.FormResponsableController">
    <children>
-      <Pane fx:id="loginPane11" layoutX="14.0" layoutY="19.0" prefHeight="512.0" prefWidth="409.0" style="-fx-border-color: grey; -fx-background-color: #E8E8E8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="14.0" layoutY="19.0" prefHeight="512.0" prefWidth="409.0" style="-fx-border-color: grey; -fx-background-color: #E8E8E8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="41.0" fitWidth="200.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="200.0" layoutX="125.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../photos/logo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="email" layoutX="89.0" layoutY="364.0" prefHeight="30.0" prefWidth="266.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="motDePasse" layoutX="89.0" layoutY="404.0" prefHeight="26.0" prefWidth="266.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button layoutX="179.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleEnregistrer" style="-fx-background-color: #a55c24; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Enregistrer" textAlignment="CENTER" textFill="WHITE">
+            <TextField fx:id="cin" layoutX="121.0" layoutY="54.0" prefHeight="30.0" prefWidth="266.0" promptText="CIN" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="nom" layoutX="120.0" layoutY="94.0" prefHeight="30.0" prefWidth="266.0" promptText="Nom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="prenom" layoutX="122.0" layoutY="134.0" prefHeight="30.0" prefWidth="266.0" promptText="Prenom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="numTel" layoutX="124.0" layoutY="175.0" prefHeight="30.0" prefWidth="266.0" promptText="Numero de Telephone" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <RadioButton fx:id="Femme" layoutX="169.0" layoutY="224.0" mnemonicParsing="false" text="Femme">
+               <toggleGroup>
+                  <ToggleGroup fx:id="genre" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Homme" layoutX="276.0" layoutY="223.0" mnemonicParsing="false" text="Homme" toggleGroup="$genre" />
+            <TextField fx:id="nbHeure" layoutX="116.0" layoutY="253.0" prefHeight="30.0" prefWidth="266.0" promptText="nombre d'Heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="salaireHeure" layoutX="118.0" layoutY="292.0" prefHeight="30.0" prefWidth="266.0" promptText="Salaire Par Heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <ComboBox fx:id="secteurCd" layoutX="174.0" layoutY="342.0" prefHeight="25.0" prefWidth="158.0" promptText="Secteur " />
+            <TextField fx:id="email" layoutX="119.0" layoutY="373.0" prefHeight="30.0" prefWidth="266.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="motDePasse" layoutX="120.0" layoutY="419.0" prefHeight="26.0" prefWidth="266.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="179.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleEnregistrer" style="-fx-background-color: #a55c24; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Enregistrer" textAlignment="CENTER" textFill="WHITE">
                <opaqueInsets>
                   <Insets top="5.0" />
                </opaqueInsets>
@@ -41,20 +55,61 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="162.0" layoutY="127.0" />
-            <PasswordField fx:id="salaireHeure" layoutX="89.0" layoutY="292.0" prefHeight="26.0" prefWidth="266.0" promptText="Salaire par heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="prenom" layoutX="89.0" layoutY="134.0" prefHeight="30.0" prefWidth="266.0" promptText="Prenom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="cin" layoutX="89.0" layoutY="54.0" prefHeight="30.0" prefWidth="266.0" promptText="CIN" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="nbHeure" layoutX="89.0" layoutY="255.0" prefHeight="26.0" prefWidth="266.0" promptText="Nombre d'heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="numTel" layoutX="89.0" layoutY="174.0" prefHeight="26.0" prefWidth="266.0" promptText="numero Telephone" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="nom" layoutX="89.0" layoutY="94.0" prefHeight="30.0" prefWidth="266.0" promptText="Nom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
-            <RadioButton fx:id="Femme" layoutX="128.0" layoutY="222.0" mnemonicParsing="false" text="Femme">
-               <toggleGroup>
-                  <ToggleGroup fx:id="genre" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="Homme" layoutX="240.0" layoutY="223.0" mnemonicParsing="false" text="Homme" toggleGroup="$genre" />
-            <ComboBox fx:id="secteurCd" layoutX="179.0" layoutY="339.0" prefHeight="25.0" prefWidth="86.0" promptText="Secteur " />
+            <Label fx:id="errMsg" layoutX="56.0" layoutY="486.0" prefHeight="47.0" prefWidth="337.0" text=" " textFill="#ff2a2a" />
+            <VBox alignment="TOP_CENTER" layoutX="17.0" layoutY="60.0" prefHeight="153.0" prefWidth="100.0" spacing="23.0">
+               <children>
+                  <Label text="Cin :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Nom :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Prenom :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Num Tel :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Genre :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Nombre H :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Salaire H :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Secteur :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Email :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Mot de passe :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
          <opaqueInsets>
             <Insets />

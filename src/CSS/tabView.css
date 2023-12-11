@@ -7,3 +7,17 @@
 .table-view {
     -fx-background-color:  #fff9f4 ;
 }
+.table-view .table-row-cell:filled:selected {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 10, 0, 0, 3);
+    -fx-text-fill: black;
+    -fx-background-color:  #fcdcc2;
+}
+.table-view .table-row-cell:hover {
+    -fx-background-color:  #fcdcc2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 10, 0, 0, 3);
+    -fx-text-fill: black;
+}
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+    -fx-content-display: CENTER;
+}

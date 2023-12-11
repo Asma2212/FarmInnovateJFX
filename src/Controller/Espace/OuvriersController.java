@@ -4,27 +4,25 @@
  */
 package Controller.Espace;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import Model.Espace.Responsable;
+import Model.Espace.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -32,31 +30,27 @@ import javafx.stage.Stage;
  *
  * @author ADMIN
  */
-public class ResponsablesController implements Initializable {
+public class OuvriersController implements Initializable {
 
     @FXML
-    private TableColumn<Responsable, Integer> cin;
+    private TableColumn<Ouvrier, Integer> cin;
     @FXML
-    private TableColumn<Responsable, String> nom;
+    private TableColumn<Ouvrier, String> nom;
     @FXML
-    private TableColumn<Responsable, String> prenom;
+    private TableColumn<Ouvrier, String> prenom;
     @FXML
-    private TableColumn<Responsable, String> genre;
+    private TableColumn<Ouvrier, String> genre;
     @FXML
-    private TableColumn<Responsable, Integer> numTel;
+    private TableColumn<Ouvrier, Integer> numTel;
     @FXML
-    private TableColumn<Responsable, String> email;
+    private TableColumn<Ouvrier, String> taches;
     @FXML
-    private TableColumn<Responsable, Integer> nbreH;
+    private TableColumn<Ouvrier, Integer> nbreH;
     @FXML
-    private TableColumn<Responsable, Double> salH;
+    private TableColumn<Ouvrier, Double> salH;
     @FXML
-    private TableColumn<Responsable, String> motDePasse;
-    @FXML
-    private TableColumn<Responsable, Integer> cSecteur;
-    @FXML
-    private TableView<Responsable> table;
-    ObservableList<Responsable> listeResp = FXCollections.observableArrayList();
+    private TableView<Ouvrier> table;
+    ObservableList<Ouvrier> listeOuv = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -65,29 +59,27 @@ public class ResponsablesController implements Initializable {
         prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         numTel.setCellValueFactory(new PropertyValueFactory<>("numTel"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        taches.setCellValueFactory(new PropertyValueFactory<>("taches"));
         nbreH.setCellValueFactory(new PropertyValueFactory<>("nbrHeure"));
-        motDePasse.setCellValueFactory(new PropertyValueFactory<>("motDePasse"));
         salH.setCellValueFactory(new PropertyValueFactory<>("salaireH"));
-        cSecteur.setCellValueFactory(new PropertyValueFactory<>("codeS"));
         
-        listeResp.addAll(new Responsable(123456, "Bey", "Asma", "F", 55436345, "a.b@g.c","111111", 15, 25.0, 1),
-                new Responsable(45678, "Belhedi", "Abir", "F", 55411345, "B.a@g.c","222222", 20, 45.0, 2),
-                new Responsable(111111, "Ben Abid", "Ghayth", "H", 99346345, "ba.g@g.c","333333", 30, 60.0, 3));
-        table.setItems(listeResp);
+        listeOuv.addAll(new Ouvrier(123456,"F", "Bey", "Asma", 55436345, 2, 15.0,"taches1"),
+                new Ouvrier(45678, "F", "Belhedi", "Abir", 55411345, 20, 45.0, "taches2"),
+                new Ouvrier(111111,"H", "Ben Abid", "Ghayth",  99346345, 30, 60.0, "taches3"));
+        table.setItems(listeOuv);
 
     }
 
     @FXML
-    private void supprimerResponsable(ActionEvent event) {
+    private void supprimerOuvrier(ActionEvent event) {
         int selectedIndex = table.getSelectionModel().getSelectedIndex();
-        Responsable resp = table.getSelectionModel().getSelectedItem();
+        Ouvrier ouv = table.getSelectionModel().getSelectedItem();
         if (selectedIndex >= 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation de suppression");
-            alert.setHeaderText("Responsable à supprimer");
+            alert.setHeaderText("Ouvrier à supprimer");
             alert.setContentText("Etes vous sur vous voulez supprimer : "+
-                    resp.getNom()+" "+resp.getPrenom()+" le responsable du secteur "+ resp.getCodeS()+" ?");
+                    ouv.getNom()+" "+ouv.getPrenom()+" ?");
                         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             table.getItems().remove(selectedIndex);
@@ -104,22 +96,22 @@ public class ResponsablesController implements Initializable {
     }
 
     @FXML
-    private void ajouterResponsable(ActionEvent event) {
+    private void ajouterOuvrier(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(FarmInnovateFX.FarmInnovateFX.class.getResource("/View/Espace/FormResponsable.fxml"));
+            loader.setLocation(FarmInnovateFX.FarmInnovateFX.class.getResource("/View/Espace/FormOuvrier.fxml"));
             AnchorPane root = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Responsable");
+            dialogStage.setTitle("Ouvrier");
             Scene scene = new Scene(root);
             dialogStage.setScene(scene);
-            FormResponsableController formCont = loader.getController();
-            Responsable rp = new Responsable();
+            FormOuvrierController formCont = loader.getController();
+            Ouvrier rp = new Ouvrier();
             formCont.setDialogStage(dialogStage);
-            formCont.setResponsable(rp);
+            formCont.setOuvrier(rp);
             dialogStage.showAndWait();
             if(rp.getCin()!=0)
-            listeResp.add(rp);
+            listeOuv.add(rp);
         }catch(IOException ioe){
             System.out.println(ioe.getMessage());
     }
@@ -127,18 +119,18 @@ public class ResponsablesController implements Initializable {
 }
 
 @FXML
-private void modifierResponsable(ActionEvent event) {
+private void modifierOuvrier(ActionEvent event) {
     int selectedIndex = table.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-    Responsable resp = table.getSelectionModel().getSelectedItem() ;
+    Ouvrier resp = table.getSelectionModel().getSelectedItem() ;
          try {
             FXMLLoader loader = new FXMLLoader(); 
-            loader.setLocation(FarmInnovateFX.FarmInnovateFX.class.getResource("/View/Espace/FormResponsable.fxml"));
+            loader.setLocation(FarmInnovateFX.FarmInnovateFX.class.getResource("/View/Espace/FormOuvrier.fxml"));
             AnchorPane root = (AnchorPane) loader.load();
-            FormResponsableController formCont = loader.getController();
-            formCont.setDataResponsable(resp);
+            FormOuvrierController formCont = loader.getController();
+            formCont.setDataOuvrier(resp);
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Responsable");
+            dialogStage.setTitle("Ouvrier");
             formCont.setDialogStage(dialogStage);
             Scene scene = new Scene(root);
             dialogStage.setScene(scene);
