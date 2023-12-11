@@ -174,7 +174,7 @@ public class PlanteController implements Initializable {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("etes vous sure de supprimer cet element");
+        alert.setContentText("Etes vous sure de supprimer cet element");
         Optional<ButtonType> action =alert.showAndWait();
         if(action.get() == ButtonType.OK)  
             plantesTableView.getItems().remove(selectedPlante);

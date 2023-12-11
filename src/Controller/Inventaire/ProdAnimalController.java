@@ -9,6 +9,7 @@ import Model.Espace.NatureProdAnimal;
 import Model.Espace.ProdAnimal;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -30,7 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller classs
  *
  * @author abir
  */
@@ -48,8 +50,6 @@ public class ProdAnimalController implements Initializable {
     private Button resetButton;
     @FXML
     private Button saveButton;
-    @FXML
-    private Label errorlabel;
     @FXML
     private DatePicker dateTf;
     @FXML
@@ -111,13 +111,14 @@ public class ProdAnimalController implements Initializable {
     }    
     @FXML
     private void saveBtnHandler(ActionEvent event) {
+        try{
         String id = idTf.getText();
         NatureProdAnimal nature = natureTf.getValue();
         Integer qt = Integer.parseInt(qtTf.getText());
         Double prix = Double.parseDouble(prixTf.getText());
         LocalDate myDate = dateTf.getValue();
             if (myDate == null) {
-                errorText.setText("Il faut remplir le champ date de naissance");
+                errorText.setText("Il faut remplir le champ date de production");
                 return;
             }
             int year = myDate.getYear();
@@ -150,12 +151,15 @@ public class ProdAnimalController implements Initializable {
         }
 
         // Clear all fields
-        clearFields();
+        clearFields();}
+         catch (NumberFormatException e) {
+            errorText.setText("Veuillez entrer des valeurs numériques valides.");
+        }
     }
 
     private boolean validationFields(NatureProdAnimal nature, Integer qt, Double prix) {
         if (nature == null || qt == null || prix == null) {
-            errorlabel.setText("Veuillez remplir tous les champs.");
+            errorText.setText("Veuillez remplir tous les champs.");
             return false;
         }
         return true;
@@ -187,7 +191,7 @@ public class ProdAnimalController implements Initializable {
         prixTf.clear();
         dateTf.setValue(null);
 
-        errorlabel.setText(""); // Clear any error messages
+        errorText.setText(""); // Clear any error messages
     }
 
     @FXML
@@ -197,5 +201,21 @@ public class ProdAnimalController implements Initializable {
         clearFields();
        }  
     }
+    @FXML
+    private void suppBtnHandler(ActionEvent event) {
+        System.out.println("asma  helloooo");
+        ProdAnimal selectedProdAnimal = prodAnimalTableView.getSelectionModel().getSelectedItem();
+                System.out.println(selectedProdAnimal);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("etes vous sure de supprimer cet element");
+        Optional<ButtonType> action =alert.showAndWait();
+        if(action.get() == ButtonType.OK){  
+            prodAnimalTableView.getItems().remove(selectedProdAnimal);
+        }
+        clearFields();
+    }
+    
     
 }
