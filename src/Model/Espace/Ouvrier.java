@@ -13,65 +13,30 @@ import java.util.Scanner;
  *
  * @author ADMIN
  */
-public class Ouvrier extends Personne{
-    private ArrayList<String> taches;
+public final class Ouvrier extends Personne{
+    private String taches;
     private int nbrHeure;
     private double salaireH ;
     // ***********************  Constructeurs ****************************  //
     public Ouvrier(){
-        taches= new ArrayList();
     }
-    public Ouvrier(int nbrHeure, double salaireH, int cin, String genre, String nom, String prenom, int numTel, Date dateNaiss, String email) {
-        super(cin, genre, nom, prenom, numTel, dateNaiss, email);
-        this.taches = new ArrayList();
+    public Ouvrier(int cin, String genre, String nom, String prenom, int numTel, Date dateNaiss,int nbrHeure, double salaireH, String taches) {
+        super(cin, genre, nom, prenom, numTel);
+        this.taches = taches;
         this.nbrHeure = nbrHeure;
         this.salaireH = salaireH;
     }
-    
-    // ***********************  CRUD ****************************  //
-    @Override
-    public void saisir(Scanner sc){
-        super.saisir(sc);
-        try{
-        System.out.println("\nentrer le nombre d'heure");
-        this.nbrHeure=sc.nextInt();
-        System.out.println("\nentrer le salaire par heure");
-        this.salaireH=sc.nextInt();            
-        }catch(InputMismatchException e){
-        System.out.println("vous n'avez pas inséré un entier"); 
-        }
-
-    }
-    @Override
-    public void modifier(Scanner sc){
-        super.modifier(sc);
-        int test;
-        try{
-            System.out.println("si vous voulez changer le nombre d'heure tapez 1 : ");
-            test = sc.nextInt();
-            if(test==1){
-                System.out.println("\nentrer le nouveau nombre d'heure");
-                this.nbrHeure = sc.nextInt();
-            }
-            System.out.println("si vous voulez changer le salaire par heure tapez 1 : ");
-            test = sc.nextInt();
-            if(test==1){
-                System.out.println("\nentrer le salaire par heure");
-                this.salaireH = sc.nextDouble();
-            }
-            System.out.println("modification effectuée avec succée");
-        }catch(InputMismatchException e){
-            System.out.println("vous n'avez pas inséré un entier"); 
-        }
+        public Ouvrier(int cin, String genre, String nom, String prenom, int numTel,int nbrHeure, double salaireH, String taches) {
+        super(cin, genre, nom, prenom, numTel);
+        this.taches = taches;
+        this.nbrHeure = nbrHeure;
+        this.salaireH = salaireH;
     }
         @Override
     public String toString(){
         String ch ;
         ch= super.toString()+"\nnombre d'heure Traivaillé : "+ getNbrHeure() +"\nsalaire par heure : "+getSalaireH();
-        ch+="\nEnsemble des taches occupées : \n";
-            for (String tache : getTaches()) {
-                ch+="- "+tache+"\n";
-            }
+        ch+="\nEnsemble des taches occupées : \n"+taches;
         return ch;
     }
     // ***********************  Manipulations ****************************  //
@@ -82,11 +47,11 @@ public class Ouvrier extends Personne{
     }
     // ***********************  getters et setters  ****************************  //
 
-    public ArrayList<String> getTaches() {
+    public String getTaches() {
         return taches;
     }
 
-    public void setTaches(ArrayList<String> taches) {
+    public void setTaches(String taches) {
         this.taches = taches;
     }
 

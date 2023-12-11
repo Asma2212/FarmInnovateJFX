@@ -35,7 +35,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
                <children>
-                  <Button cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" layoutX="98.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EspaceFermierAction" pickOnBounds="false" prefHeight="57.0" prefWidth="238.0" scaleShape="false" snapToPixel="false" style="-fx-background-color: #EFD6BE; -fx-border-color: #994F0A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Espace Fermier" textFill="#0f0f0f" textOverrun="CLIP">
+                  <Button cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" layoutX="98.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EspaceFermierAction" pickOnBounds="false" prefHeight="57.0" prefWidth="238.0" scaleShape="false" snapToPixel="false" style="-fx-background-color: #EFD6BE; -fx-border-color: #994F0A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Espace Fermier" textFill="#0f0f0f" textOverrun="CLIP">
                      <font>
                         <Font name="Serif Regular" size="20.0" />
                      </font>
@@ -48,15 +48,7 @@
                         <Image url="@../../photos/logo.png" />
                      </image>
                   </ImageView>
-                  <Button cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="99.0" layoutY="355.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EspaceResponsableAction" pickOnBounds="false" prefHeight="58.0" prefWidth="238.0" scaleShape="false" style="-fx-background-color: #EFD6BE; -fx-border-color: #994F0A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Espace Responsable" textFill="#0f0f0f" textOverrun="CLIP">
-                     <font>
-                        <Font name="Serif Regular" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="98.0" layoutY="453.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EspaceClientAction" pickOnBounds="false" prefHeight="58.0" prefWidth="238.0" scaleShape="false" style="-fx-background-color: #EFD6BE; -fx-border-color: #994F0A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Espace Client" textFill="#0f0f0f" textOverrun="CLIP">
+                  <Button cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="99.0" layoutY="401.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#EspaceResponsableAction" pickOnBounds="false" prefHeight="58.0" prefWidth="238.0" scaleShape="false" style="-fx-background-color: #EFD6BE; -fx-border-color: #994F0A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Espace Responsable" textFill="#0f0f0f" textOverrun="CLIP">
                      <font>
                         <Font name="Serif Regular" size="20.0" />
                      </font>

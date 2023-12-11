@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="444.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="Controller.Espace.FormOuvrierController">
+ <children>
+      <Pane layoutX="14.0" layoutY="19.0" prefHeight="512.0" prefWidth="409.0" style="-fx-border-color: grey; -fx-background-color: #E8E8E8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 10, 10);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="41.0" fitWidth="200.0" layoutX="122.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../photos/logo.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="cin" layoutX="89.0" layoutY="60.0" prefHeight="30.0" prefWidth="266.0" promptText="CIN" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="nom" layoutX="89.0" layoutY="107.0" prefHeight="30.0" prefWidth="266.0" promptText="Nom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="prenom" layoutX="89.0" layoutY="156.0" prefHeight="30.0" prefWidth="266.0" promptText="Prenom" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="numTel" layoutX="89.0" layoutY="205.0" prefHeight="30.0" prefWidth="266.0" promptText="Numero de Telephone" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <RadioButton fx:id="Femme" layoutX="122.0" layoutY="261.0" mnemonicParsing="false" text="Femme">
+               <toggleGroup>
+                  <ToggleGroup fx:id="genre" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Homme" layoutX="232.0" layoutY="261.0" mnemonicParsing="false" text="Homme" toggleGroup="$genre" />
+            <TextField fx:id="nbHeure" layoutX="93.0" layoutY="299.0" prefHeight="30.0" prefWidth="266.0" promptText="nombre d'Heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="salaireHeure" layoutX="92.0" layoutY="349.0" prefHeight="30.0" prefWidth="266.0" promptText="Salaire Par Heure" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="taches" layoutX="89.0" layoutY="397.0" prefHeight="30.0" prefWidth="266.0" promptText="Tache" style="-fx-background-color: transparent; -fx-border-color: #a55c24; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="179.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleEnregistrer" style="-fx-background-color: #a55c24; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Enregistrer" textAlignment="CENTER" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets top="5.0" />
+               </opaqueInsets>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="54.34" radius="28.277500000000003" width="60.77" />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="errMsg" layoutX="54.0" layoutY="479.0" prefHeight="47.0" prefWidth="337.0" text=" " textFill="#ff2a2a" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+      <VBox layoutX="17.0" layoutY="69.0" prefHeight="153.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Label text="Cin :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Nom :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Prenom :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Num Tel :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Genre :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Nombre H :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Salaire H :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Taches :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

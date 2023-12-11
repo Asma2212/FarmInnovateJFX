@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author ADMIN
  */
-public class Client extends Personne implements IUser<Client>,Comparator<Client>{
+public final class Client extends Personne implements Comparator<Client>{
     private String motDePasse ;
     private Date dateInscri ;
     private Map<Date,Commande> commandes = new HashMap(){};
@@ -30,59 +30,11 @@ public class Client extends Personne implements IUser<Client>,Comparator<Client>
         this.motDePasse = motDePasse;
     }
 
-    // ***********************  CRUD ****************************  //
-    @Override
-    public void saisir(Scanner sc){
-        super.saisir(sc);
-        System.out.println("donner la mot de passe : ");
-        this.motDePasse = sc.next();      
-    }
-    @Override
-    public void modifier(Scanner sc){
-        int test;
-        super.modifier(sc);
-        System.out.println("si vous voulez changer la mot de passe tapez 1 : ");
-        test = sc.nextInt();
-            if(test==1){
-                System.out.println("\nentrer la nouvelle mot de passe");
-                this.motDePasse = sc.next();
-            }
-        System.out.println("modification effectuée avec succée");
-    }
     @Override
     public String toString(){
         String ch;
         ch = super.toString()+"\nDate Inscri : "+dateInscri;
         return ch;
-    }
-    // ***********************  Manipulation ****************************  //
-    @Override
-    public void sinscrire(Collection<Client> clients){
-            if(! clients.contains(this))
-            clients.add(this);
-        else
-            System.out.println("vous avez deja un compte");
-    };
-    @Override
-    public boolean sauthentifier(Scanner sc,Collection<Client> clients){
-        String mail;
-        String mp;
-        System.out.println("donner votre email");
-        mail=sc.next();
-        System.out.println("donner votre mot de passe");
-        mp=sc.next();
-        for (Client clt : clients) {
-            if(mail.equals(clt.getEmail())&& mp.equals(clt.getMotDePasse()))
-               return true;   
-        }
-        return false;
-    }
-    @Override
-    public void consulterBatiments() {}
-    
-    @Override
-    public void consulterProduction() {
-        
     }
     @Override
     public int compare(Client c1, Client c2) {

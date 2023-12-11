@@ -24,6 +24,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -58,17 +59,14 @@ public class HomeFController implements Initializable{
     
     @FXML
     private void handleBatimentAction(ActionEvent event) {
-           
-     try{
-        Parent root =FXMLLoader.load(getClass().getResource("/View/Inventaire/Batiments.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("FarmInnovate/Espace/Batiments");
-        stage.setScene(scene);  
-        stage.show();   
-        }catch (IOException ioe){
-            System.out.println("exception : "+ioe.getMessage());
-        }
+        bodyPane.getChildren().clear();
+                      try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Inventaire/Batiments.fxml"));
+            BorderPane body = loader.load();
+            bodyPane.getChildren().add(body);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }   
     }
     
     @FXML
@@ -87,12 +85,43 @@ public class HomeFController implements Initializable{
     @FXML
     private void handleProductionAction(ActionEvent event) {}
     @FXML
-    private void handleDeconnecterAction(ActionEvent event) {}
+    private void handleDeconnecterAction(ActionEvent event) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deconnexion");
+            alert.setHeaderText("Etes vous sur vous voulez vous déconnecter ?");
+            Optional<ButtonType> result = alert.showAndWait();
+             if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Espace/Home.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("FarmInnovate/Acceuil");
+            stage.show();
+            Scene currentScene = ((Node) event.getSource()).getScene();
+            Stage currentStage = (Stage) currentScene.getWindow();
+            currentStage.close();
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+            }
+    }
+    @FXML
+    private void handleOuvrierAction(ActionEvent event) {
+            bodyPane.getChildren().clear();
+                      try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Espace/Ouvriers.fxml"));
+            AnchorPane body = loader.load();
+            bodyPane.getChildren().add(body);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void handleResponsableAction(ActionEvent event){
          bodyPane.getChildren().clear();
                       try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Espace/Responsables.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Espace/Ouvriers.fxml"));
             AnchorPane body = loader.load();
             bodyPane.getChildren().add(body);
         } catch (IOException e) {
@@ -111,7 +140,7 @@ public class HomeFController implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        compteBtn.setText(LoginController.getName());
+        //compteBtn.setText(LoginController.getName());
         sideBar.setTranslateX(-181);
         bodyPane.setTranslateX(-183);
         menu.setOnMouseClicked(event -> { 

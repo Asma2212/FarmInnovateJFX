@@ -18,7 +18,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import Model.Espace.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,28 +57,93 @@ public class SecteurItemController implements Initializable {
     private TextField planteSecteur;
     @FXML
     private AnchorPane itemAnchor ;
-    
+    Connection connection ;
     private Secteur secteur;
-    
+    private List<Secteur> secteurs = new ArrayList<>();
     public void setData(Secteur secteur) {
         this.secteur = secteur;
+        System.out.println(this.secteur.getCodeS());
        // this.myListener = myListener;
         nomSecteur.setText(secteur.getNomSecteur());
         idSecteur.setText(String.valueOf(secteur.getCodeS()));
-        responsableSecteur.setText("resp");
+        String query = "SELECT p.nom,p.prenom FROM Responsable r,Personne p WHERE r.idP=p.idP AND codeS ="+this.secteur.getCodeS();
+          PreparedStatement ps;
+          String nomR = "Responsable";
+        try {
+            ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                nomR = nom+" "+prenom;
+            } 
+        } catch (SQLException ex) {}
+        responsableSecteur.setText(nomR);
         planteSecteur.setText("plante");
         batSecteur.setText("Bat");
     }
+
     @FXML
     public void deleteSecteur(MouseEvent event){
         String nomS = nomSecteur.getText();
         int idS = Integer.parseInt(idSecteur.getText());
-        ArrayList<Responsable> resp = new ArrayList<>();
-        
+        Secteur sect = new Secteur(idS,nomS); 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation de suppression");
+                alert.setHeaderText("Secteur à supprimer");
+            alert.setContentText("Etes vous sur vous voulez supprimer : "+
+                    " le secteur "+nomS+" "+idS+" ?");
+                        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK){
+           try {
+            Class.forName("oracle.jdbc.OracleDriver");
+        } catch (ClassNotFoundException cnf) {
+            System.out.println("class not found exception ");
+        }            
+        String url1 = "jdbc:oracle:thin:@localhost:1521:XE";
+        String name = "ferme";
+        String pass = "ferme";
+        try{ 
+            connection = DriverManager.getConnection(url1, name, pass);
+            String query = "DELETE FROM Secteur WHERE codeS="+idS;
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println("secteur supprimé !! ");
+                
+                
+            }
+        } catch (SQLException sqlE) {
+            System.out.println("SQL:" + sqlE.getMessage());
+        }
+         
+}    
     }
     @FXML
     public void modifSecteur(MouseEvent event){
-        
+         String nomS = nomSecteur.getText();
+         int idS = Integer.parseInt(idSecteur.getText());
+         Secteur sect = new Secteur(idS,nomS);
+             try {
+            Class.forName("oracle.jdbc.OracleDriver");
+        } catch (ClassNotFoundException cnf) {
+            System.out.println("class not found exception ");
+        }
+
+        String url1 = "jdbc:oracle:thin:@localhost:1521:XE";
+        String name = "ferme";
+        String pass = "ferme";
+        try {
+            connection = DriverManager.getConnection(url1, name, pass);
+            String query = "UPDATE Secteur set nomSecteur="+nomS+"WHERE codeS="+idS;
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println("secteur modifié !! ");
+            }
+        } catch (SQLException sqlE) {
+            System.out.println("SQL:" + sqlE.getMessage());
+        }
     }
     @FXML
     public void valideModifSecteur(MouseEvent event){
@@ -86,7 +168,21 @@ public class SecteurItemController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            Class.forName("oracle.jdbc.OracleDriver");
+        } catch (ClassNotFoundException cnf) {
+            System.out.println("class not found exception ");
+        }
+
+        String url1 = "jdbc:oracle:thin:@localhost:1521:XE";
+        String name = "ferme";
+        String pass = "ferme";
+        try {
+            connection = DriverManager.getConnection(url1, name, pass);
+            
+        } catch (SQLException sqlE) {
+            System.out.println("SQL:" + sqlE.getMessage());
+        }
     }    
     
 }
