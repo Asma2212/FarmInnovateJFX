@@ -71,15 +71,16 @@ public class EngraisSaisieController implements Initializable {
     public void setBatiment(Batiment batiment, TableView<Produit> produitTableView,Engrais engrais) {
         this.batiment = batiment;
         this.produitTableView=produitTableView;
-        idLabel.setText(engrais.getIdProduit());
-        formTf.setText(engrais.getFormulation());
-        periodeTf.setText(engrais.getPeriodeApp());
-        doseTf.setText(String.valueOf(engrais.getDoseRec()));
-        combobox.setValue(engrais.getType());
-        qtTf.setText(String.valueOf(engrais.getQtNet()));
-        nbrprodTf.setText(String.valueOf(engrais.getNbrProd()));
-        compTf.setText(engrais.getComposition());
-        this.engrais=engrais;
+        if(!batiment.getList().isEmpty()){
+            idLabel.setText(engrais.getIdProduit());
+            formTf.setText(engrais.getFormulation());
+            periodeTf.setText(engrais.getPeriodeApp());
+            doseTf.setText(String.valueOf(engrais.getDoseRec()));
+            combobox.setValue(engrais.getType());
+            qtTf.setText(String.valueOf(engrais.getQtNet()));
+            nbrprodTf.setText(String.valueOf(engrais.getNbrProd()));
+            compTf.setText(engrais.getComposition());
+            this.engrais=engrais;}
     }
     
     /**

@@ -5,6 +5,7 @@
 package Controller.Inventaire;
 
 import Controller.Inventaire.BatimentsController;
+import Model.Espace.ProdAnimal;
 import Model.Inventaire.Animal;
 import Model.Inventaire.Batiment;
 import Model.Inventaire.Engrais;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +30,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -96,7 +99,6 @@ public class BatimentProduitController implements Initializable {
         
         modifierbtn.setVisible(false);
         supprimerbtn.setVisible(false);
-        
         idColonne.setCellValueFactory(new PropertyValueFactory<>("idProduit"));
         formulationColonne.setCellValueFactory(new PropertyValueFactory<>("formulation"));
         periodeAppColonne.setCellValueFactory(new PropertyValueFactory<>("periodeApp"));
@@ -121,9 +123,17 @@ public class BatimentProduitController implements Initializable {
             return new SimpleStringProperty("null");
         }
         });
-        //compositionColonne.setCellValueFactory(new PropertyValueFactory<>("composition"));
-        DARColonne.setCellValueFactory(new PropertyValueFactory<>("DAR"));
         
+       // DARColonne.setCellValueFactory(new PropertyValueFactory<>("DAR"));
+        DARColonne.setCellValueFactory(data -> {
+        Produit produit = data.getValue();
+
+        if (produit instanceof Pesticide) {
+            return new SimpleIntegerProperty(((Pesticide) produit).getDAR()).asObject();
+        } else {
+            return new SimpleIntegerProperty(0).asObject(); // Default value for Engrais or other types
+        }
+    });
         produitTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
