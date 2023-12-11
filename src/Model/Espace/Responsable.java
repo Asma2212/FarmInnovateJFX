@@ -70,63 +70,7 @@ public final class Responsable extends Personne{
         ch= super.toString()+"\nnombre d'heure Traivaillé : "+ getNbrHeure() +"\nsalaire par heure : "+getSalaireH()+"\n=>Salaire = "+calculSalaire();
         return ch;
     }
-    // ***********************  Manipulations ****************************  //
-    // ********************** Gestion des Ouvriers *************************//
-    public void ajouterOuvrier(Ouvrier o){
-        getOuvriers().add(o);
-    }
-    
-    public Ouvrier getOuvrierById(int id){
-        for (Ouvrier ouvrier : getOuvriers()) {
-            if(ouvrier.getIdP()==id)
-                return ouvrier ;
-        }
-        return null;
-    }
-    public void supprimerOuvrier(int id){
-        for (Ouvrier ouvrier : getOuvriers()) {
-            if(ouvrier.getIdP()==id){
-                getOuvriers().remove(ouvrier) ;
-                System.out.println("suppression effectuée avec succée");
-            }
-        }
-    }
-    public void modifierOuvrier(int id){
-        boolean test=false;
-        Ouvrier o = new Ouvrier();
-         Iterator<Ouvrier> it = ouvriers.iterator(); 
-         while (it.hasNext()&&!test){ 
-                  o = it.next();
-             if(o.getIdP()==id)
-                 test = true;         
-        }
-         if(test){
-             ouvriers.remove(o);
-             ouvriers.add(o);
-         }
-    }
-    public void consulterOuvriers(){
-        System.out.println("Liste des ouvriers :");
-        if(ouvriers.isEmpty())
-            System.out.println("vide!");
-        else
-        ouvriers.forEach(System.out::println);
-    }
-    //************************** Gestion de production ***********************//
-    public void ajouterProduction(Production p){
-        productions.put(p.getRefP(),p);
-    }
-    public void modifierProduction(int refP,Scanner sc){
-        if (productions.containsKey(refP)) {
-            Production prod = productions.get(refP);
-            productions.remove(refP);
-            productions.put(prod.getRefP(), prod);
-        }
-    }
-    public void supprimerProduction(int refP){
-        productions.remove(refP);
-    }
-    
+   
     public double calculSalaire() {
     ICalculSalaire calSalaire = (nbHeure, salaireHeure) -> nbHeure * salaireHeure;
     return calSalaire.calculSalaire(this.getNbrHeure(), this.getSalaireH());

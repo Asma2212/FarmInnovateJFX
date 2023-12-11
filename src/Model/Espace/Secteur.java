@@ -17,8 +17,6 @@ public record Secteur(int codeS,String nomSecteur){
     public int getCodeS() {
         return codeS;
     }
-
-
     public String getNomSecteur() {
         return nomSecteur;
     }

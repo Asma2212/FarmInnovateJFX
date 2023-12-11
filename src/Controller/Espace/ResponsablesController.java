@@ -74,6 +74,8 @@ public class ResponsablesController implements Initializable {
         listeResp.addAll(new Responsable(123456, "Bey", "Asma", "F", 55436345, "a.b@g.c","111111", 15, 25.0, 1),
                 new Responsable(45678, "Belhedi", "Abir", "F", 55411345, "B.a@g.c","222222", 20, 45.0, 2),
                 new Responsable(111111, "Ben Abid", "Ghayth", "H", 99346345, "ba.g@g.c","333333", 30, 60.0, 3));
+        
+        listeResp.stream().map(r-> r.getCodeS()+r.getCodeS()).forEach(System.out::println);
         table.setItems(listeResp);
 
     }

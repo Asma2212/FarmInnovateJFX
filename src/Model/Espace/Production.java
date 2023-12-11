@@ -24,31 +24,6 @@ public abstract class Production {
         this.qteStock = qteStock;
         this.prix = prix;
     }
-
- /*   public void saisir(Scanner sc){
-        try{
-            System.out.println("entrer la reference du produit : ");
-            this.refP=sc.next();
-            System.out.println("entrer la quantité en stock : ");
-            this.qteStock=sc.nextInt();
-            System.out.println("entrer son prix : ");
-            this.prix=sc.nextDouble();
-        }catch(InputMismatchException e){
-            System.out.println("vous n'avez pas inséré un entier");  
-        }
-    }
-    public void modifier(Scanner sc){
-       try{
-            System.out.println("entrer la nouvelle reference : ");
-            this.refP=sc.next();
-            System.out.println("entrer la nouvelle quantité : ");
-            this.qteStock=sc.nextInt();
-            System.out.println("entrer le nouveau prix : ");
-            this.prix=sc.nextDouble();
-        }catch(InputMismatchException e){
-            System.out.println("vous n'avez pas inséré un entier");  
-        } 
-    }*/
     @Override 
     public String toString(){
         return "RefP : "+refP+" Qte Stock : "+ qteStock+" prix : "+prix;

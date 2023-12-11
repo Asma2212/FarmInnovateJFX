@@ -83,7 +83,6 @@ public static String role ;
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         }
-
     }
 
     @Override
